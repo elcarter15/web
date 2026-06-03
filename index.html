@@ -7,6 +7,11 @@
   <meta name="keywords" content="Fundación Luz y Vida, Petare, infancia, derechos humanos, educación, Venezuela">
   <meta name="author" content="Fundación Luz y Vida">
   <title>Fundación Luz y Vida | Petare</title>
+  
+  <!-- Favicon - Icono en la pestaña del navegador -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' text-anchor='middle' dy='.3em' font-size='80' fill='%230b5e42'>🕊️</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' text-anchor='middle' dy='.3em' font-size='80' fill='%230b5e42'>🕊️</text></svg>">
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
@@ -19,7 +24,7 @@
       --accent-hover: #c53030;
       --text-main: #1e293b;
       --text-muted: #475569;
-      --bg-body: #94a3b8; 
+      --bg-body: #f1f5f9;
       --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
       --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
       --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
@@ -30,6 +35,7 @@
     * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
@@ -46,23 +52,42 @@
       padding: 0 24px;
     }
 
-    /* Navbar Moderno */
+    /* Cintillo/Navbar Fijo */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 16px 36px;
-      margin: 20px auto 40px;
+      margin: 0 auto;
       flex-wrap: wrap;
       gap: 20px;
-      position: sticky;
-      top: 20px;
-      background: rgba(255, 255, 255, 0.95);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(12px);
       z-index: 1000;
-      border-radius: 50px;
       box-shadow: var(--shadow-md);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-container {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .navbar.scrolled {
+      padding: 12px 36px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
     }
 
     .logo h1 {
@@ -118,9 +143,12 @@
       box-shadow: var(--shadow-md);
     }
 
-    /* Hero Section */
+    .main-content {
+      padding-top: 100px;
+    }
+
+    /* Hero Section con Imagen Institucional de Fondo */
     .hero {
-      background: #eef2ff;
       border-radius: var(--radius-xl);
       margin: 30px 0 60px;
       padding: 80px 50px;
@@ -129,30 +157,54 @@
       align-items: center;
       justify-content: space-between;
       gap: 40px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    /* Imagen de fondo institucional */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://www.acnur.org/sites/default/files/styles/landscape_10/public/2026-03/aranza_i.webp?h=4233b947&itok=UeDbej1d&t=1773880171');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      filter: brightness(0.35) contrast(1.1);
+      z-index: 0;
+      transition: transform 0.5s ease;
+    }
+
+    .hero:hover::before {
+      transform: scale(1.02);
     }
 
     .hero-text {
       flex: 1.2;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-text h2 {
       font-size: 3.5rem;
       font-weight: 800;
       line-height: 1.1;
-      background: linear-gradient(145deg, var(--primary), var(--primary-light));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
       margin-bottom: 20px;
     }
 
     .hero-text p {
       font-size: 1.2rem;
       margin-bottom: 32px;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.95);
       max-width: 600px;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.3);
     }
 
     .hero-btn {
@@ -168,6 +220,8 @@
       transition: all 0.3s ease;
       font-size: 1.1rem;
       box-shadow: var(--shadow-md);
+      border: none;
+      cursor: pointer;
     }
 
     .hero-btn:hover {
@@ -179,18 +233,24 @@
     .hero-img {
       flex: 0.9;
       text-align: center;
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      padding: 30px;
       animation: float 6s ease-in-out infinite;
     }
 
     .hero-img i {
-      font-size: 12rem;
-      color: var(--primary-light);
-      filter: drop-shadow(0 20px 30px rgba(44, 156, 110, 0.2));
+      font-size: 8rem;
+      color: white;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
+      50% { transform: translateY(-15px); }
     }
 
     /* Sección Misión */
@@ -429,9 +489,8 @@
       object-fit: contain;
     }
 
-    /* Estilo específico para el logo de ACNUR, que es más ancho */
     .logo-acnur img {
-      max-height: 300px;
+      max-height: 65px;
     }
 
     /* Carrusel de Galería */
@@ -492,7 +551,7 @@
     .carousel-slide img {
       width: 100%;
       height: 550px;
-      object-fit: contain;
+      object-fit: cover;
       background: #0f172a;
       display: block;
     }
@@ -888,27 +947,62 @@
       font-size: 0.95rem;
     }
 
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: var(--shadow-md);
+      border: none;
+    }
+
+    .scroll-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .navbar {
-        border-radius: 24px;
-        padding: 20px;
+        padding: 12px 20px;
+      }
+      .navbar-container {
         flex-direction: column;
-        margin: 10px 10px 30px;
       }
       .nav-links {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 15px;
       }
       .hero {
         text-align: center;
         padding: 50px 30px;
       }
       .hero-text h2 {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
       }
       .hero-img {
         display: none;
+      }
+      .main-content {
+        padding-top: 130px;
       }
       #mision, .colibri, .testimonial, .alianzas, .instagram-carousel, .video-section, .contact-section {
         padding: 40px 30px;
@@ -917,284 +1011,291 @@
         height: 350px;
       }
       .logo-card {
-        min-width: 150px;
-        padding: 15px 20px;
+        min-width: 130px;
+        padding: 12px 18px;
       }
       .logo-card img {
-        max-height: 45px;
+        max-height: 40px;
       }
-      /* Ajuste responsive para el logo de ACNUR */
-      .logo-acnur img {
-        max-height: 65px;
+    }
+
+    @media (max-width: 600px) {
+      .main-content {
+        padding-top: 160px;
+      }
+      .hero-text h2 {
+        font-size: 2rem;
+      }
+      .hero-text p {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar container">
-    <div class="logo">
-      <h1>Fundación Luz y Vida</h1>
-      <span>Fundación comunitaria · Petare, 1994</span>
+  <!-- Cintillo/Navbar Fijo -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <h1>Fundación Luz y Vida</h1>
+        <span>Fundación comunitaria · Petare, 1994</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#mision">Nuestra labor</a></li>
+        <li><a href="#colibri">Colibrí</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#contacto" class="btn-donate">Contáctanos <i class="fa-solid fa-paper-plane"></i></a></li>
+      </ul>
     </div>
-    <ul class="nav-links">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#mision">Nuestra labor</a></li>
-      <li><a href="#colibri">Colibrí</a></li>
-      <li><a href="#galeria">Galería</a></li>
-      <li><a href="#videos">Videos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-      <li><a href="#contacto" class="btn-donate">Contáctanos <i class="fa-solid fa-paper-plane"></i></a></li>
-    </ul>
   </nav>
 
-  <div class="container">
-    <!-- Hero Section -->
-    <div id="inicio" class="hero">
-      <div class="hero-text">
-        <h2>Defendemos la infancia en Petare</h2>
-        <p>Más de 30 años transformando vidas. Brindamos educación, protegemos los derechos humanos y construimos esperanza para niños, niñas y adolescentes en situación de vulnerabilidad.</p>
-        <a href="#galeria" class="hero-btn">Conoce nuestro impacto <i class="fa-solid fa-arrow-right"></i></a>
+  <div class="main-content">
+    <div class="container">
+      <!-- Hero Section con Imagen Institucional de Fondo -->
+      <div id="inicio" class="hero">
+        <div class="hero-text">
+          <h2>Defendemos la infancia en Petare</h2>
+          <p>Más de 30 años transformando vidas. Brindamos educación, protegemos los derechos humanos y construimos esperanza para niños, niñas y adolescentes en situación de vulnerabilidad.</p>
+          <a href="#galeria" class="hero-btn">Conoce nuestro impacto <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-img">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+        </div>
       </div>
-      <div class="hero-img">
-        <i class="fa-solid fa-hand-holding-heart"></i>
-      </div>
-    </div>
 
-    <!-- Sección Misión -->
-    <div id="mision">
-      <h2 class="section-title">Nuestra causa</h2>
-      <div class="mission-cards">
-        <div class="card">
-          <i class="fa-solid fa-school"></i>
-          <h3>Aulas Comunitarias</h3>
-          <p>Nivelación académica para niños fuera del sistema, garantizando su reinserción escolar oportuna y exitosa.</p>
-        </div>
-        <div class="card">
-          <i class="fa-solid fa-gavel"></i>
-          <h3>Defensoría Gratuita</h3>
-          <p>Acompañamiento legal en casos de falta de partida de nacimiento, reconocimientos de paternidad y medidas de protección.</p>
-        </div>
-        <div class="card">
-          <i class="fa-solid fa-brain"></i>
-          <h3>Atención Psicosocial</h3>
-          <p>Apoyo emocional integral, talleres de prevención de violencia intrafamiliar y promoción de la sana convivencia.</p>
-        </div>
-        <div class="card">
-          <i class="fa-solid fa-balance-scale"></i>
-          <h3>Asistencia Legal</h3>
-          <p>Orientación jurídica especializada para familias y menores en situación de vulnerabilidad extrema.</p>
+      <!-- Sección Misión -->
+      <div id="mision">
+        <h2 class="section-title">Nuestra causa</h2>
+        <div class="mission-cards">
+          <div class="card">
+            <i class="fa-solid fa-school"></i>
+            <h3>Aulas Comunitarias</h3>
+            <p>Nivelación académica para niños fuera del sistema, garantizando su reinserción escolar oportuna y exitosa.</p>
+          </div>
+          <div class="card">
+            <i class="fa-solid fa-gavel"></i>
+            <h3>Defensoría Gratuita</h3>
+            <p>Acompañamiento legal en casos de falta de partida de nacimiento, reconocimientos de paternidad y medidas de protección.</p>
+          </div>
+          <div class="card">
+            <i class="fa-solid fa-brain"></i>
+            <h3>Atención Psicosocial</h3>
+            <p>Apoyo emocional integral, talleres de prevención de violencia intrafamiliar y promoción de la sana convivencia.</p>
+          </div>
+          <div class="card">
+            <i class="fa-solid fa-balance-scale"></i>
+            <h3>Asistencia Legal</h3>
+            <p>Orientación jurídica especializada para familias y menores en situación de vulnerabilidad extrema.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Centro Colibrí -->
-    <div id="colibri" class="colibri">
-      <div class="colibri-text">
-        <h3><i class="fa-solid fa-dove"></i> Centro Comunitario "Colibrí"</h3>
-        <p>Ubicado en el sector Antonio José de Sucre, Petare. Un espacio seguro donde la educación es el verdadero motor del cambio social. Actualmente atendemos a menores que retornaron a Venezuela o que nunca tuvieron acceso al sistema escolar tradicional.</p>
-        <p>Con el valioso apoyo de ACNUR, hemos instalado una moderna sala tecnológica y brindamos programas de nivelación acelerada.</p>
-        <div class="colibri-stats">
-          <div class="stat"><span>+189</span> Niños activos</div>
-          <div class="stat"><span>100%</span> Asistencia gratuita</div>
-          <div class="stat"><span>2023-2025</span> Aliados ONU</div>
+      <!-- Centro Colibrí -->
+      <div id="colibri" class="colibri">
+        <div class="colibri-text">
+          <h3><i class="fa-solid fa-dove"></i> Centro Comunitario "Colibrí"</h3>
+          <p>Ubicado en el sector Antonio José de Sucre, Petare. Un espacio seguro donde la educación es el verdadero motor del cambio social. Actualmente atendemos a menores que retornaron a Venezuela o que nunca tuvieron acceso al sistema escolar tradicional.</p>
+          <p>Con el valioso apoyo de ACNUR, hemos instalado una moderna sala tecnológica y brindamos programas de nivelación acelerada.</p>
+          <div class="colibri-stats">
+            <div class="stat"><span>+189</span> Niños activos</div>
+            <div class="stat"><span>100%</span> Asistencia gratuita</div>
+            <div class="stat"><span>2023-2025</span> Aliados ONU</div>
+          </div>
+        </div>
+        <div class="colibri-img">
+          <i class="fa-solid fa-chalkboard-user"></i>
+          <p style="margin-top: 15px; font-weight: 600; font-size: 1.1rem;">Aulas vivas de esperanza</p>
         </div>
       </div>
-      <div class="colibri-img">
-        <i class="fa-solid fa-chalkboard-user"></i>
-        <p style="margin-top: 15px; font-weight: 600; font-size: 1.1rem;">Aulas vivas de esperanza</p>
-      </div>
-    </div>
 
-    <!-- Testimonio -->
-    <div class="testimonial">
-      <div class="testimonial-icon">
-        <i class="fa-solid fa-user-graduate"></i>
-      </div>
-      <div class="testimonial-content">
-        <h3>Gloria Perdomo — Directora y defensora incansable</h3>
-        <p>Profesora e investigadora en la UCAB, y coordinadora nacional del Observatorio Venezolano de Violencia. Galardonada con el Premio de Derechos Humanos UCV – Embajada de Canadá. Bajo su liderazgo, la fundación ha sido reconocida internacionalmente por <strong>ACNUR Venezuela</strong> e IDENNA como un referente nacional en protección infantil.</p>
-        <div class="quote">
-          <i class="fa-solid fa-quote-left" style="color: var(--primary-light); opacity: 0.5; margin-right: 10px;"></i>
-          Educar en derechos humanos es la única vía sostenible para romper los ciclos de violencia y pobreza en nuestras comunidades.
+      <!-- Testimonio -->
+      <div class="testimonial">
+        <div class="testimonial-icon">
+          <i class="fa-solid fa-user-graduate"></i>
+        </div>
+        <div class="testimonial-content">
+          <h3>Gloria Perdomo — Directora y defensora incansable</h3>
+          <p>Profesora e investigadora en la UCAB, y coordinadora nacional del Observatorio Venezolano de Violencia. Galardonada con el Premio de Derechos Humanos UCV – Embajada de Canadá. Bajo su liderazgo, la fundación ha sido reconocida internacionalmente por <strong>ACNUR Venezuela</strong> e IDENNA como un referente nacional en protección infantil.</p>
+          <div class="quote">
+            <i class="fa-solid fa-quote-left" style="color: var(--primary-light); opacity: 0.5; margin-right: 10px;"></i>
+            Educar en derechos humanos es la única vía sostenible para romper los ciclos de violencia y pobreza en nuestras comunidades.
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Alianzas con logos ajustados -->
-    <div class="alianzas">
-      <h3>Aliados que hacen posible el cambio</h3>
-      <div class="logos">
-        <!-- ACNUR: Clase especial para aumentar el tamaño del logo -->
-        <a href="https://www.acnur.org/donde-trabajamos/pais/venezuela/" target="_blank" rel="noopener noreferrer" class="logo-acnur">
-          <div class="logo-card">
-            <img src="https://www.acnur.org/themes/custom/project/images/logo/logo-es.svg" alt="Logo ACNUR Venezuela" loading="lazy">
-          </div>
-        </a>
-        <!-- UNICEF -->
-        <a href="https://www.unicef.org/venezuela/" target="_blank" rel="noopener noreferrer">
-          <div class="logo-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/UNICEF_Logo.png/960px-UNICEF_Logo.png" alt="Logo UNICEF" loading="lazy">
-          </div>
-        </a>
-        <!-- UCV -->
-        <a href="http://www.ucv.ve/" target="_blank" rel="noopener noreferrer">
-          <div class="logo-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_Universidad_Central_de_Venezuela.svg/960px-Logo_Universidad_Central_de_Venezuela.svg.png" alt="Logo UCV" loading="lazy">
-          </div>
-        </a>
-        <!-- UCAB -->
-        <a href="https://www.ucab.edu.ve/" target="_blank" rel="noopener noreferrer">
-          <div class="logo-card">
-            <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/419728166_766954035476108_9201319637267695307_n.jpg?stp=c135.98.794.794a_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=P51nAVBHhRIQ7kNvwFIoxhh&_nc_oc=AdpEXVpzVa4Ug4ECsP2sn8o9EaEXAYWz55rMLMJRUSvRTC-EeSil4y5vLIKO16uZ1B8&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=JBUFWkWQTyh9wAKPWesJVA&_nc_ss=7a289&oh=00_Af9DVar-Z5MT0YvtunhMQRwlnMjiE76HtRDZVaHPYT3xag&oe=6A25602B" alt="Logo UCAB" loading="lazy">
-          </div>
-        </a>
-        <!-- CRV -->
-        <a href="https://www.cruzrojavenezolana.org/" target="_blank" rel="noopener noreferrer">
-          <div class="logo-card">
-            <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/352718976_921871942207749_1070504529264999811_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=PUqbPTqOqcEQ7kNvwErlW1t&_nc_oc=AdqQajVN7tTNaZ_cwOeaaUF4Ijen1KtPj-veR1314dXMULwkwsZBGjQRoPkwPZnX730&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=rL51Bt4LwFbDELdMb5LmQw&_nc_ss=7a289&oh=00_Af_89EFc6g-E72pz-kJtFbWV_6LohDiXylGrk-gQXbFOyQ&oe=6A256492" alt="Logo CRV" loading="lazy">
-          </div>
-        </a>
-        <!-- CMDNNA -->
-        <a href="https://www.alcaldiamunicipiosucre.gov.ve/public/cmdnna" target="_blank" rel="noopener noreferrer">
-          <div class="logo-card">
-            <img src="https://www.alcaldiamunicipiosucre.gov.ve/public/img/Institutos/Iconos/iconografia-43.png" alt="Logo CMDNNA" loading="lazy">
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- Galería -->
-    <div id="galeria" class="instagram-carousel">
-      <h3>
-        <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-instagram"></i> Galería
-        </a>
-      </h3>
-      <p>Acompañando a las familias de Petare, un día a la vez.</p>
-      
-      <div class="carousel-wrapper">
-        <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-slide">
-            <img src="https://www.acnur.org/sites/default/files/styles/landscape_10/public/2026-03/aranza_i.webp?h=4233b947&itok=UeDbej1d&t=1773880171" alt="Voluntarios de ACNUR trabajando en comunidad" loading="lazy">
-            <div class="slide-overlay"><p>❤️ 150 Me gusta<br><strong>fundaluzyvida</strong> Trabajando en el terreno junto a ACNUR por el futuro de nuestros niños. ✨</p></div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://www.acnur.org/sites/default/files/styles/d12/public/2026-03/aranza_iii.webp?itok=MczEB-XR&t=1773880544" alt="Entrega de materiales educativos" loading="lazy">
-            <div class="slide-overlay"><p>❤️ 234 Me gusta<br><strong>fundaluzyvida</strong> Juntos hacemos la diferencia. El apoyo de ACNUR es vital para Petare. 💙🇺🇳</p></div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://www.acnur.org/sites/default/files/styles/de2e/public/legacy-images/5c1da7562b6.webp?itok=d3oJ3Hg2&t=1673997873" alt="Niños en actividades recreativas" loading="lazy">
-            <div class="slide-overlay"><p>❤️ 214 Me gusta<br><strong>fundaluzyvida</strong> Protegiendo sonrisas y construyendo un entorno seguro para nuestra infancia. 🤝🫂</p></div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/481051831_626680213396407_990313324066312795_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=UncV38HBlbwQ7kNvwEemL6v&_nc_oc=AdpPGAG-rDPqaSonB1sKOVNHWE1MpwurwBI2rnDza6ZtbCkYC4qjJ8HbP-PnbrEZa8c&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=as8rAZUYw2L7pn14qNumaw&_nc_ss=7b289&oh=00_Af9nSTnx5fGHFWjrmtzTEyID9PGyOjKnlEv6SfYY-yOjIg&oe=6A257C1D" alt="Espacios de aprendizaje comunitario" loading="lazy">
-            <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Espacios comunitarios llenos de aprendizaje y desarrollo integral. 📚✨</p></div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/481269572_626680233396405_5120911193098100826_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=K9xxFklGdtYQ7kNvwE4t-tV&_nc_oc=AdospmFfbP-UZRH6x7zIQ9qR_LwMjYG0x_FjMpi6dVeLdjg6AzHCAPzEbfyi0VQVou0&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=I1_1vCASTSkNMiyXVyRItA&_nc_ss=7b289&oh=00_Af8sU8SRIjBpGMH1JB_coty5WaHtap8QVT40nhWQXmDxoQ&oe=6A2565DD" alt="Voluntarias enseñando en aula" loading="lazy">
-            <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Impulsando la educación comunitaria con dedicación y compromiso. 👩‍🏫❤️</p></div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/481119485_626680230063072_1431035881945840748_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=uG4_ZEEGIYEQ7kNvwGjsN63&_nc_oc=AdrXdNjOElCw85VS6oJ_3dnWQkqbgHORjGaY19ORIPrnJMCvkblt8h6NoGxEozqlf7c&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=NSAyoDKzTLLYEyOvLuw-gQ&_nc_ss=7b2a8&oh=00_Af-RHhkFv6bEEROA9zx9EBdGM3TeQbU-jhb8yE0LeRnHBA&oe=6A2564A7" alt="Niños celebrando un logro" loading="lazy">
-            <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Cada logro de nuestros niños es un paso hacia un futuro mejor. 🌟🏽</p></div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/480684126_621632003901228_8951865498168042141_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zi8DyyZbCHUQ7kNvwEs-Cgk&_nc_oc=AdrIKL-4iwge5Ro8gki4-UbbtCUaavohLOjV9y7oPQAriaYduYHwnrqRhMRbrHJoAMQ&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=2f6gMX4FST8tWb8x01Y4nw&_nc_ss=7b2a8&oh=00_Af81PM6KA8JaFxJLwINRSsTiqHvFBJG__h9qW8LnNjqbAA&oe=6A25522D" alt="Familia participando en taller" loading="lazy">
-            <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Compartiendo sonrisas y construyendo redes de apoyo familiar. 🏡🤝</p></div>
-          </div>
-          <div class="carousel-slide">
-            <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/480660516_621503140580781_8632384667733939065_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Dnd8XlOAEIkQ7kNvwELht7g&_nc_oc=AdqGL75hsRLmgfsX6flLNFXZdLhncKtD2aEXyLxhlZ8f5eftCEwNw_F_pceLHfP4Pgs&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=9a2y9MdihtsHnGSbsCUSrQ&_nc_ss=7b2a8&oh=00_Af8jcWxZcBtRKJNiTxe4DIf1XKyOFLym4gxGjKjeK3eikg&oe=6A2564C6" alt="Niños jugando en actividades recreativas" loading="lazy">
-            <div class="slide-overlay"><p><strong>fundaluzyvida</strong> El juego y la recreación son fundamentales para los derechos de la infancia. 🎈🎨</p></div>
-          </div>
-        </div>
-        
-        <button class="carousel-btn prev" id="btnPrev" aria-label="Imagen anterior"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="carousel-btn next" id="btnNext" aria-label="Imagen siguiente"><i class="fa-solid fa-chevron-right"></i></button>
-      </div>
-      
-      <div class="carousel-dots" id="carouselDots"></div>
-    </div>
-
-    <!-- Sección Videos -->
-    <div id="videos" class="video-section">
-      <h3><i class="fa-brands fa-youtube" style="color: #FF0000;"></i> Nuestros Videos</h3>
-      <p>Conoce más sobre nuestra labor y el impacto en la comunidad.</p>
-      
-      <div class="video-grid">
-        <div class="video-card open-video" data-video-id="yokf9ZSx-z0">
-          <img src="https://img.youtube.com/vi/yokf9ZSx-z0/hqdefault.jpg" alt="Video presentación Fundación Luz y Vida" loading="lazy">
-          <div class="play-button"><i class="fa-solid fa-play"></i></div>
-        </div>
-        
-        <div class="video-card open-video" data-video-id="wsbEZ43e5EA">
-          <img src="https://img.youtube.com/vi/wsbEZ43e5EA/hqdefault.jpg" alt="Testimonios de la comunidad" loading="lazy">
-          <div class="play-button"><i class="fa-solid fa-play"></i></div>
-        </div>
-        
-        <div class="video-card open-video" data-video-id="qZb1H8-otAY">
-          <img src="https://img.youtube.com/vi/qZb1H8-otAY/hqdefault.jpg" alt="Talleres educativos en Petare" loading="lazy">
-          <div class="play-button"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-        <div class="video-card open-video" data-video-id="gMxRIG6H7vg">
-          <img src="https://img.youtube.com/vi/gMxRIG6H7vg/hqdefault.jpg" alt="Jornada de atención integral" loading="lazy">
-          <div class="play-button"><i class="fa-solid fa-play"></i></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal de Video -->
-    <div id="videoModal" class="video-modal">
-      <div class="modal-content">
-        <span class="close-modal" id="closeModal">×</span>
-        <div class="iframe-container">
-          <iframe id="youtubeIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección Contacto -->
-    <div id="contacto" class="contact-section">
-      <div class="contact-general">
-        <div>
-          <h3 style="font-size: 2rem; color: var(--text-main); margin-bottom: 10px;">Ponte en contacto</h3>
-          <div class="contact-general-info">
-            <p><i class="fa-solid fa-clock"></i> <span><strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 4:00 PM</span></p>
-            <p><i class="fa-solid fa-phone-alt"></i> <span>+58 212 123 4567 (Oficina)</span></p>
-            <p><i class="fa-solid fa-envelope"></i> <span>contacto@luzyvidapetare.org</span></p>
-          </div>
-        </div>
-        
-        <div class="social-links">
-          <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer" class="instagram" title="Instagram">
-            <i class="fa-brands fa-instagram"></i>
+      <!-- Alianzas -->
+      <div class="alianzas">
+        <h3>Aliados que hacen posible el cambio</h3>
+        <div class="logos">
+          <a href="https://www.acnur.org/donde-trabajamos/pais/venezuela/" target="_blank" rel="noopener noreferrer" class="logo-acnur">
+            <div class="logo-card">
+              <img src="https://www.acnur.org/themes/custom/project/images/logo/logo-es.svg" alt="Logo ACNUR Venezuela" loading="lazy">
+            </div>
           </a>
-          <a href="https://twitter.com/Fundaluzyvida" target="_blank" rel="noopener noreferrer" class="twitter" title="Twitter / X">
-            <i class="fa-brands fa-x-twitter"></i>
+          <a href="https://www.unicef.org/venezuela/" target="_blank" rel="noopener noreferrer">
+            <div class="logo-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/UNICEF_Logo.png/960px-UNICEF_Logo.png" alt="Logo UNICEF" loading="lazy">
+            </div>
           </a>
-          <a href="https://www.facebook.com/people/Fundaci%C3%B3n-Luz-y-Vida/100081633019094/" target="_blank" rel="noopener noreferrer" class="facebook" title="Facebook">
-            <i class="fa-brands fa-facebook-f"></i>
+          <a href="http://www.ucv.ve/" target="_blank" rel="noopener noreferrer">
+            <div class="logo-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_Universidad_Central_de_Venezuela.svg/960px-Logo_Universidad_Central_de_Venezuela.svg.png" alt="Logo UCV" loading="lazy">
+            </div>
           </a>
-          <a href="https://www.youtube.com/@fundacionluzyvida7545" target="_blank" rel="noopener noreferrer" class="youtube" title="YouTube">
-            <i class="fa-brands fa-youtube"></i>
+          <a href="https://www.ucab.edu.ve/" target="_blank" rel="noopener noreferrer">
+            <div class="logo-card">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/419728166_766954035476108_9201319637267695307_n.jpg?stp=c135.98.794.794a_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=P51nAVBHhRIQ7kNvwFIoxhh&_nc_oc=AdpEXVpzVa4Ug4ECsP2sn8o9EaEXAYWz55rMLMJRUSvRTC-EeSil4y5vLIKO16uZ1B8&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=JBUFWkWQTyh9wAKPWesJVA&_nc_ss=7a289&oh=00_Af9DVar-Z5MT0YvtunhMQRwlnMjiE76HtRDZVaHPYT3xag&oe=6A25602B" alt="Logo UCAB" loading="lazy">
+            </div>
+          </a>
+          <a href="https://www.cruzrojavenezolana.org/" target="_blank" rel="noopener noreferrer">
+            <div class="logo-card">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/352718976_921871942207749_1070504529264999811_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=PUqbPTqOqcEQ7kNvwErlW1t&_nc_oc=AdqQajVN7tTNaZ_cwOeaaUF4Ijen1KtPj-veR1314dXMULwkwsZBGjQRoPkwPZnX730&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=rL51Bt4LwFbDELdMb5LmQw&_nc_ss=7a289&oh=00_Af_89EFc6g-E72pz-kJtFbWV_6LohDiXylGrk-gQXbFOyQ&oe=6A256492" alt="Logo CRV" loading="lazy">
+            </div>
+          </a>
+          <a href="https://www.alcaldiamunicipiosucre.gov.ve/public/cmdnna" target="_blank" rel="noopener noreferrer">
+            <div class="logo-card">
+              <img src="https://www.alcaldiamunicipiosucre.gov.ve/public/img/Institutos/Iconos/iconografia-43.png" alt="Logo CMDNNA" loading="lazy">
+            </div>
           </a>
         </div>
       </div>
-      
-      <div class="locations-container">
-        <div class="location-card">
-          <h4><i class="fa-solid fa-building-flag"></i> Sede Principal</h4>
-          <p><i class="fa-solid fa-map-marker-alt" style="color: var(--primary); margin-right: 8px;"></i> Calle Madeleine, Casa N° 12-07.<br>Casco Histórico Colonial de Petare, Municipio Sucre, Miranda, Venezuela.</p>
-          <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.3644033284!2d-66.8087098!3d10.4767894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a59b998daf48b%3A0xc8cb9129c9603d75!2sFUNDACION%20LUZ%20Y%20VIDA!5e0!3m2!1ses!2sve!4v1700000000000!5m2!1ses!2sve" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación sede principal Fundación Luz y Vida"></iframe>
+
+      <!-- Galería -->
+      <div id="galeria" class="instagram-carousel">
+        <h3>
+          <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram"></i> Galería
+          </a>
+        </h3>
+        <p>Acompañando a las familias de Petare, un día a la vez.</p>
+        
+        <div class="carousel-wrapper">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+              <img src="https://www.acnur.org/sites/default/files/styles/landscape_10/public/2026-03/aranza_i.webp?h=4233b947&itok=UeDbej1d&t=1773880171" alt="Voluntarios de ACNUR trabajando en comunidad" loading="lazy">
+              <div class="slide-overlay"><p>❤️ 150 Me gusta<br><strong>fundaluzyvida</strong> Trabajando en el terreno junto a ACNUR por el futuro de nuestros niños. ✨</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://www.acnur.org/sites/default/files/styles/d12/public/2026-03/aranza_iii.webp?itok=MczEB-XR&t=1773880544" alt="Entrega de materiales educativos" loading="lazy">
+              <div class="slide-overlay"><p>❤️ 234 Me gusta<br><strong>fundaluzyvida</strong> Juntos hacemos la diferencia. El apoyo de ACNUR es vital para Petare. 💙🇺🇳</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://www.acnur.org/sites/default/files/styles/de2e/public/legacy-images/5c1da7562b6.webp?itok=d3oJ3Hg2&t=1673997873" alt="Niños en actividades recreativas" loading="lazy">
+              <div class="slide-overlay"><p>❤️ 214 Me gusta<br><strong>fundaluzyvida</strong> Protegiendo sonrisas y construyendo un entorno seguro para nuestra infancia. 🤝🫂</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/481051831_626680213396407_990313324066312795_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=UncV38HBlbwQ7kNvwEemL6v&_nc_oc=AdpPGAG-rDPqaSonB1sKOVNHWE1MpwurwBI2rnDza6ZtbCkYC4qjJ8HbP-PnbrEZa8c&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=as8rAZUYw2L7pn14qNumaw&_nc_ss=7b289&oh=00_Af9nSTnx5fGHFWjrmtzTEyID9PGyOjKnlEv6SfYY-yOjIg&oe=6A257C1D" alt="Espacios de aprendizaje comunitario" loading="lazy">
+              <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Espacios comunitarios llenos de aprendizaje y desarrollo integral. 📚✨</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/481269572_626680233396405_5120911193098100826_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=K9xxFklGdtYQ7kNvwE4t-tV&_nc_oc=AdospmFfbP-UZRH6x7zIQ9qR_LwMjYG0x_FjMpi6dVeLdjg6AzHCAPzEbfyi0VQVou0&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=I1_1vCASTSkNMiyXVyRItA&_nc_ss=7b289&oh=00_Af8sU8SRIjBpGMH1JB_coty5WaHtap8QVT40nhWQXmDxoQ&oe=6A2565DD" alt="Voluntarias enseñando en aula" loading="lazy">
+              <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Impulsando la educación comunitaria con dedicación y compromiso. 👩‍🏫❤️</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/481119485_626680230063072_1431035881945840748_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=uG4_ZEEGIYEQ7kNvwGjsN63&_nc_oc=AdrXdNjOElCw85VS6oJ_3dnWQkqbgHORjGaY19ORIPrnJMCvkblt8h6NoGxEozqlf7c&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=NSAyoDKzTLLYEyOvLuw-gQ&_nc_ss=7b2a8&oh=00_Af-RHhkFv6bEEROA9zx9EBdGM3TeQbU-jhb8yE0LeRnHBA&oe=6A2564A7" alt="Niños celebrando un logro" loading="lazy">
+              <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Cada logro de nuestros niños es un paso hacia un futuro mejor. 🌟🏽</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/480684126_621632003901228_8951865498168042141_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zi8DyyZbCHUQ7kNvwEs-Cgk&_nc_oc=AdrIKL-4iwge5Ro8gki4-UbbtCUaavohLOjV9y7oPQAriaYduYHwnrqRhMRbrHJoAMQ&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=2f6gMX4FST8tWb8x01Y4nw&_nc_ss=7b2a8&oh=00_Af81PM6KA8JaFxJLwINRSsTiqHvFBJG__h9qW8LnNjqbAA&oe=6A25522D" alt="Familia participando en taller" loading="lazy">
+              <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Compartiendo sonrisas y construyendo redes de apoyo familiar. 🏡🤝</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/480660516_621503140580781_8632384667733939065_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Dnd8XlOAEIkQ7kNvwELht7g&_nc_oc=AdqGL75hsRLmgfsX6flLNFXZdLhncKtD2aEXyLxhlZ8f5eftCEwNw_F_pceLHfP4Pgs&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=9a2y9MdihtsHnGSbsCUSrQ&_nc_ss=7b2a8&oh=00_Af8jcWxZcBtRKJNiTxe4DIf1XKyOFLym4gxGjKjeK3eikg&oe=6A2564C6" alt="Niños jugando en actividades recreativas" loading="lazy">
+              <div class="slide-overlay"><p><strong>fundaluzyvida</strong> El juego y la recreación son fundamentales para los derechos de la infancia. 🎈🎨</p></div>
+            </div>
+          </div>
+          
+          <button class="carousel-btn prev" id="btnPrev" aria-label="Imagen anterior"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="carousel-btn next" id="btnNext" aria-label="Imagen siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+
+      <!-- Sección Videos -->
+      <div id="videos" class="video-section">
+        <h3><i class="fa-brands fa-youtube" style="color: #FF0000;"></i> Nuestros Videos</h3>
+        <p>Conoce más sobre nuestra labor y el impacto en la comunidad.</p>
+        
+        <div class="video-grid">
+          <div class="video-card open-video" data-video-id="yokf9ZSx-z0">
+            <img src="https://img.youtube.com/vi/yokf9ZSx-z0/hqdefault.jpg" alt="Video presentación Fundación Luz y Vida" loading="lazy">
+            <div class="play-button"><i class="fa-solid fa-play"></i></div>
+          </div>
+          
+          <div class="video-card open-video" data-video-id="wsbEZ43e5EA">
+            <img src="https://img.youtube.com/vi/wsbEZ43e5EA/hqdefault.jpg" alt="Testimonios de la comunidad" loading="lazy">
+            <div class="play-button"><i class="fa-solid fa-play"></i></div>
+          </div>
+          
+          <div class="video-card open-video" data-video-id="qZb1H8-otAY">
+            <img src="https://img.youtube.com/vi/qZb1H8-otAY/hqdefault.jpg" alt="Talleres educativos en Petare" loading="lazy">
+            <div class="play-button"><i class="fa-solid fa-play"></i></div>
+          </div>
+
+          <div class="video-card open-video" data-video-id="gMxRIG6H7vg">
+            <img src="https://img.youtube.com/vi/gMxRIG6H7vg/hqdefault.jpg" alt="Jornada de atención integral" loading="lazy">
+            <div class="play-button"><i class="fa-solid fa-play"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de Video -->
+      <div id="videoModal" class="video-modal">
+        <div class="modal-content">
+          <span class="close-modal" id="closeModal">×</span>
+          <div class="iframe-container">
+            <iframe id="youtubeIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección Contacto -->
+      <div id="contacto" class="contact-section">
+        <div class="contact-general">
+          <div>
+            <h3 style="font-size: 2rem; color: var(--text-main); margin-bottom: 10px;">Ponte en contacto</h3>
+            <div class="contact-general-info">
+              <p><i class="fa-solid fa-clock"></i> <span><strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 4:00 PM</span></p>
+              <p><i class="fa-solid fa-phone-alt"></i> <span>+58 212 123 4567 (Oficina)</span></p>
+              <p><i class="fa-solid fa-envelope"></i> <span>contacto@luzyvidapetare.org</span></p>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer" class="instagram" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com/Fundaluzyvida" target="_blank" rel="noopener noreferrer" class="twitter" title="Twitter / X">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/people/Fundaci%C3%B3n-Luz-y-Vida/100081633019094/" target="_blank" rel="noopener noreferrer" class="facebook" title="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.youtube.com/@fundacionluzyvida7545" target="_blank" rel="noopener noreferrer" class="youtube" title="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
           </div>
         </div>
         
-        <div class="location-card">
-          <h4><i class="fa-solid fa-dove"></i> Centro Comunitario "Colibrí"</h4>
-          <p><i class="fa-solid fa-map-marker-alt" style="color: var(--primary); margin-right: 8px;"></i> Sector Antonio José de Sucre.<br>Petare, Municipio Sucre, Miranda, Venezuela.</p>
-          <div class="map-container">
-            <iframe src="https://maps.google.com/maps?q=10.4959375,-66.7942656&hl=es&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación Centro Comunitario Colibrí"></iframe>
+        <div class="locations-container">
+          <div class="location-card">
+            <h4><i class="fa-solid fa-building-flag"></i> Sede Principal</h4>
+            <p><i class="fa-solid fa-map-marker-alt" style="color: var(--primary); margin-right: 8px;"></i> Calle Madeleine, Casa N° 12-07.<br>Casco Histórico Colonial de Petare, Municipio Sucre, Miranda, Venezuela.</p>
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.3644033284!2d-66.8087098!3d10.4767894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a59b998daf48b%3A0xc8cb9129c9603d75!2sFUNDACION%20LUZ%20Y%20VIDA!5e0!3m2!1ses!2sve!4v1700000000000!5m2!1ses!2sve" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación sede principal Fundación Luz y Vida"></iframe>
+            </div>
+          </div>
+          
+          <div class="location-card">
+            <h4><i class="fa-solid fa-dove"></i> Centro Comunitario "Colibrí"</h4>
+            <p><i class="fa-solid fa-map-marker-alt" style="color: var(--primary); margin-right: 8px;"></i> Sector Antonio José de Sucre.<br>Petare, Municipio Sucre, Miranda, Venezuela.</p>
+            <div class="map-container">
+              <iframe src="https://maps.google.com/maps?q=10.4959375,-66.7942656&hl=es&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación Centro Comunitario Colibrí"></iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -1239,6 +1340,10 @@
     </div>
   </footer>
 
+  <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
   <script>
     // 1. Scroll Suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1248,7 +1353,7 @@
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
-          const headerOffset = 100;
+          const headerOffset = 90;
           const elementPosition = target.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
           window.scrollTo({ top: offsetPosition, behavior: "smooth" });
@@ -1256,7 +1361,17 @@
       });
     });
 
-    // 2. Carrusel optimizado con pausa al hover
+    // 2. Navbar efecto scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // 3. Carrusel
     const track = document.getElementById('carouselTrack');
     const slides = Array.from(track.children);
     const btnNext = document.getElementById('btnNext');
@@ -1264,10 +1379,8 @@
     const dotsNav = document.getElementById('carouselDots');
     const wrapper = document.querySelector('.carousel-wrapper');
     
-    let autoInterval;
     let isHovering = false;
     
-    // Crear dots
     slides.forEach((_, index) => {
       const dot = document.createElement('button');
       dot.classList.add('dot');
@@ -1286,14 +1399,6 @@
       dots[index].classList.add('active');
     };
 
-    const nextSlide = () => {
-      if (!isHovering) {
-        currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
-        updateCarousel(currentIndex);
-      }
-    };
-
-    // Eventos del carrusel
     btnNext.addEventListener('click', () => {
       currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
       updateCarousel(currentIndex);
@@ -1311,16 +1416,10 @@
       updateCarousel(currentIndex);
     });
 
-    // Pausar auto-rotación al hacer hover
-    wrapper.addEventListener('mouseenter', () => {
-      isHovering = true;
-    });
-    
-    wrapper.addEventListener('mouseleave', () => {
-      isHovering = false;
-    });
+    wrapper.addEventListener('mouseenter', () => { isHovering = true; });
+    wrapper.addEventListener('mouseleave', () => { isHovering = false; });
 
-    // 3. Modal de Video mejorado
+    // 4. Modal de Video
     const videoModal = document.getElementById('videoModal');
     const closeModalBtn = document.getElementById('closeModal');
     const youtubeIframe = document.getElementById('youtubeIframe');
@@ -1346,27 +1445,25 @@
       if(e.target === videoModal) closeVideo();
     });
     
-    // Cerrar con tecla ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && videoModal.classList.contains('active')) {
         closeVideo();
       }
     });
 
-    // 4. Lazy loading adicional para imágenes fuera del viewport
-    if ('IntersectionObserver' in window) {
-      const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-      const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            img.loading = 'lazy';
-            imageObserver.unobserve(img);
-          }
-        });
-      });
-      lazyImages.forEach(img => imageObserver.observe(img));
-    }
+    // 5. Botón para subir al inicio
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
