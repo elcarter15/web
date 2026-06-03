@@ -6,14 +6,11 @@
   <meta name="description" content="Fundación Luz y Vida - Defendemos la infancia en Petare desde 1994. Educación, protección y derechos humanos para niños, niñas y adolescentes en situación de vulnerabilidad.">
   <meta name="keywords" content="Fundación Luz y Vida, Petare, infancia, derechos humanos, educación, Venezuela">
   <meta name="author" content="Fundación Luz y Vida">
-  <title>Fundación Luz y Vida </title>
+  <title>Fundación Luz y Vida</title>
   
   <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="assets/css/style.css?v=4"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     /* Variables CSS */
     :root {
@@ -24,11 +21,12 @@
       --accent-hover: #c53030;
       --text-main: #1e293b;
       --text-muted: #475569;
-      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-      --radius: 24px;
-      --radius-sm: 16px;
+      --bg-body: #f1f5f9;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      --radius-lg: 32px;
+      --radius-xl: 48px;
     }
 
     * {
@@ -41,11 +39,11 @@
       font-family: 'Inter', sans-serif;
       color: var(--text-main);
       scroll-behavior: smooth;
-      line-height: 1.5;
+      line-height: 1.6;
       position: relative;
     }
 
-    /* Fondo de pantalla completo */
+    /* Fondo de pantalla completo con la imagen escritorio.jpg */
     body::before {
       content: '';
       position: fixed;
@@ -61,6 +59,7 @@
       z-index: -2;
     }
 
+    /* Capa de superposición oscura para mejorar legibilidad */
     body::after {
       content: '';
       position: fixed;
@@ -68,80 +67,89 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.75);
       z-index: -1;
     }
 
+    /* Fallback si no encuentra la imagen */
     body.no-image::before {
       background-image: url('https://www.acnur.org/sites/default/files/styles/landscape_10/public/2026-03/aranza_i.webp?h=4233b947&itok=UeDbej1d&t=1773880171');
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 24px;
     }
 
-    /* Navbar */
+    /* Navbar Fijo - fondo semitransparente para que se vea la imagen de fondo */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 24px;
+      padding: 16px 36px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 20px;
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       z-index: 1000;
+      box-shadow: var(--shadow-md);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
     }
 
     .navbar-container {
-      max-width: 1200px;
+      max-width: 1280px;
       width: 100%;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 20px;
     }
 
     .navbar.scrolled {
-      padding: 8px 24px;
+      padding: 12px 36px;
+      background: rgba(0, 0, 0, 0.95);
     }
 
     .logo h1 {
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-size: 1.8rem;
+      font-weight: 800;
       background: linear-gradient(135deg, #ffffff, #cbd5e1);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      letter-spacing: -0.5px;
     }
 
     .logo span {
-      font-size: 0.7rem;
-      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
       display: block;
+      margin-top: 2px;
     }
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       list-style: none;
-      font-weight: 500;
+      font-weight: 600;
       align-items: center;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255, 255, 255, 0.9);
       transition: all 0.3s ease;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
     }
 
     .nav-links a:hover {
@@ -151,22 +159,24 @@
     .btn-donate {
       background: var(--accent);
       color: white !important;
-      padding: 8px 18px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.85rem;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
     }
 
     .btn-donate:hover {
       background: var(--accent-hover);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
     .main-content {
-      padding-top: 80px;
+      padding-top: 100px;
     }
 
-    /* Cajas base */
+    /* Todas las cajas con fondo blanco semitransparente para que se vea la imagen de fondo */
     .hero,
     #mision,
     .colibri-section,
@@ -175,22 +185,23 @@
     .instagram-carousel,
     .video-section,
     .contact-section {
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(2px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-md);
-      margin-bottom: 40px;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
     }
 
-    /* Hero */
+    /* Hero Section con texto adaptado */
     .hero {
+      margin: 30px 0 60px;
+      padding: 80px 60px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
-      padding: 40px 40px;
-      margin-top: 20px;
+      gap: 50px;
+      min-height: 500px;
     }
 
     .hero-text {
@@ -198,145 +209,171 @@
     }
 
     .hero-text .hero-title-large {
-      font-size: 2.2rem;
+      font-size: 4.5rem;
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1;
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 8px;
+      margin-bottom: 15px;
+      letter-spacing: -0.02em;
     }
 
     .hero-text .hero-subtitle {
-      font-size: 1.1rem;
+      font-size: 1.6rem;
       font-weight: 600;
       color: var(--text-main);
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .hero-text .hero-tagline {
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .hero-text p {
-      font-size: 0.95rem;
-      margin-bottom: 25px;
+      font-size: 1.1rem;
+      margin-bottom: 32px;
       color: var(--text-muted);
-      max-width: 500px;
+      max-width: 600px;
     }
 
     .hero-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: var(--primary);
       color: white;
-      padding: 10px 24px;
-      border-radius: 30px;
-      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 40px;
+      font-weight: 700;
       text-decoration: none;
-      font-size: 0.9rem;
       transition: all 0.3s ease;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-md);
+      border: none;
+      cursor: pointer;
     }
 
     .hero-btn:hover {
       background: var(--primary-dark);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
     }
 
     .hero-img {
-      flex: 0.7;
+      flex: 0.8;
       text-align: center;
-      background: rgba(11, 94, 66, 0.08);
-      border-radius: var(--radius-sm);
-      padding: 25px;
+      background: rgba(255,255,255,0.5);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      animation: float 6s ease-in-out infinite;
     }
 
     .hero-img i {
-      font-size: 4rem;
+      font-size: 7rem;
       color: var(--primary);
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
     }
 
     .colibri-badge {
       display: inline-block;
-      background: rgba(11, 94, 66, 0.1);
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 15px;
-      font-size: 0.75rem;
+      background: rgba(11, 94, 66, 0.15);
+      padding: 8px 20px;
+      border-radius: 40px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--primary);
+      letter-spacing: 1px;
+    }
+
+    .colibri-badge i {
+      margin-right: 8px;
     }
 
     /* Sección Misión */
     #mision {
-      padding: 40px 40px;
+      padding: 70px 50px;
+      margin: 80px 0;
     }
 
     .section-title {
       text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 35px;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 50px;
       color: var(--text-main);
     }
 
     .section-title:after {
       content: '';
       display: block;
-      width: 60px;
-      height: 3px;
+      width: 80px;
+      height: 6px;
       background: var(--primary-light);
-      margin: 12px auto 0;
-      border-radius: 3px;
+      margin: 16px auto 0;
+      border-radius: 6px;
     }
 
     .mission-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
     }
 
     .card {
       background: #ffffff;
-      border-radius: var(--radius-sm);
-      padding: 25px 20px;
+      border-radius: var(--radius-lg);
+      padding: 40px 30px;
+      box-shadow: var(--shadow-sm);
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
     }
 
     .card i {
-      font-size: 2.2rem;
+      font-size: 3rem;
       color: var(--primary);
-      margin-bottom: 15px;
+      margin-bottom: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover i {
+      transform: scale(1.1);
     }
 
     .card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
       color: var(--text-main);
     }
 
     .card p {
       color: var(--text-muted);
-      font-size: 0.85rem;
-      line-height: 1.5;
+      font-size: 1rem;
     }
 
-    /* Colibrí */
+    /* Centro Colibrí */
     .colibri-section {
+      padding: 70px 50px;
+      margin: 80px 0;
+      color: var(--text-main);
       display: flex;
       flex-wrap: wrap;
-      gap: 35px;
+      gap: 50px;
       align-items: center;
-      padding: 40px 40px;
     }
 
     .colibri-section-text {
@@ -344,189 +381,409 @@
     }
 
     .colibri-section-text h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
       color: var(--primary);
     }
 
     .colibri-section-text p {
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-      line-height: 1.6;
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+      line-height: 1.8;
       color: var(--text-muted);
     }
 
     .colibri-stats {
       display: flex;
-      gap: 30px;
+      gap: 40px;
       flex-wrap: wrap;
     }
 
     .stat {
-      font-weight: 500;
-      font-size: 0.9rem;
+      font-weight: 600;
+      font-size: 1.1rem;
       color: var(--text-muted);
     }
 
     .stat span {
-      font-size: 1.6rem;
+      font-size: 2.5rem;
       display: block;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--primary);
-      margin-bottom: 3px;
+      margin-bottom: 5px;
     }
 
     .colibri-section-img {
-      flex: 0.7;
+      flex: 0.8;
       text-align: center;
-      background: rgba(11, 94, 66, 0.05);
-      border-radius: var(--radius-sm);
-      padding: 30px;
+      background: rgba(11, 94, 66, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 40px;
     }
 
     .colibri-section-img i {
-      font-size: 3.5rem;
+      font-size: 6rem;
+      margin-bottom: 15px;
       color: var(--primary);
-      margin-bottom: 10px;
     }
 
     /* Testimonio */
     .testimonial {
+      padding: 60px 50px;
+      margin: 80px 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 40px;
       align-items: center;
-      padding: 35px 40px;
     }
 
     .testimonial-icon i {
-      font-size: 3.5rem;
+      font-size: 6rem;
       color: var(--primary);
     }
 
+    .testimonial-content {
+      flex: 2.5;
+    }
+
     .testimonial-content h3 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
+      font-size: 2rem;
+      margin-bottom: 16px;
       color: var(--text-main);
     }
 
     .testimonial-content p {
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .quote {
-      font-size: 1rem;
+      font-size: 1.3rem;
       font-style: italic;
       color: var(--primary-dark);
-      font-weight: 500;
-      border-left: 3px solid var(--primary-light);
-      padding-left: 18px;
-      margin-top: 15px;
+      font-weight: 600;
+      border-left: 4px solid var(--primary-light);
+      padding-left: 20px;
+      margin-top: 20px;
     }
 
     /* Alianzas */
     .alianzas {
-      padding: 40px 30px;
+      padding: 70px 40px;
+      margin: 80px 0;
       text-align: center;
     }
 
     .alianzas h3 {
-      font-size: 1.5rem;
-      margin-bottom: 30px;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: var(--text-main);
     }
 
     .logos {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .logos a {
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .logos a:hover {
+      transform: translateY(-5px);
     }
 
     .logo-card {
-      background: #ffffff;
-      padding: 12px 20px;
-      border-radius: 40px;
-      min-width: 130px;
+      background: #ffffff; 
+      padding: 20px 28px;
+      border-radius: 60px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .logo-card:hover {
+      box-shadow: var(--shadow-md);
     }
 
     .logo-card img {
-      max-height: 40px;
+      max-height: 55px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-acnur img {
+      max-height: 65px;
     }
 
     /* Carrusel */
     .instagram-carousel {
-      padding: 40px 30px;
+      padding: 70px 40px;
+      margin: 80px 0;
       text-align: center;
     }
 
     .instagram-carousel h3 {
-      font-size: 1.5rem;
-      margin-bottom: 8px;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .instagram-carousel h3 a {
+      color: #E1306C;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .instagram-carousel h3 a:hover {
+      color: var(--primary);
     }
 
     .instagram-carousel p {
-      font-size: 0.85rem;
-      margin-bottom: 25px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
     }
 
     .carousel-wrapper {
       position: relative;
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-lg);
       overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: #0f172a;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
     }
 
     .carousel-slide img {
       width: 100%;
-      height: 380px;
+      height: 550px;
       object-fit: cover;
+      background: #0f172a;
+      display: block;
     }
 
-    .slide-overlay p {
-      font-size: 0.8rem;
-      margin-bottom: 0;
+    .slide-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      color: white;
+      padding: 60px 30px 20px;
+      text-align: left;
+      pointer-events: none;
     }
 
     .carousel-btn {
-      width: 35px;
-      height: 35px;
-      font-size: 0.9rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      z-index: 10;
+    }
+
+    .carousel-btn:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-btn.prev { left: 20px; }
+    .carousel-btn.next { right: 20px; }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: #cbd5e1;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: var(--primary);
+      transform: scale(1.2);
     }
 
     /* Videos */
     .video-section {
-      padding: 40px 30px;
+      padding: 70px 40px;
+      margin: 80px 0;
       text-align: center;
     }
 
     .video-section h3 {
-      font-size: 1.5rem;
-      margin-bottom: 8px;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
     }
 
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      max-width: 900px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
+    .video-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      aspect-ratio: 16 / 9;
+      background: #0f172a;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .video-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-card:hover img {
+      opacity: 0.9;
+    }
+
     .play-button {
-      width: 50px;
-      height: 50px;
-      font-size: 2rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3.5rem;
+      color: #FF0000;
+      background: white;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover .play-button {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Modal Video */
+    .video-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      background: #000;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      padding: 10px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      color: white;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close-modal:hover {
+      color: var(--accent);
+    }
+
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
     }
 
     /* Contacto */
     .contact-section {
-      padding: 35px 40px;
+      padding: 60px 50px;
+      margin: 80px 0;
     }
 
     .contact-general {
@@ -534,137 +791,278 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      margin-bottom: 30px;
-      padding-bottom: 25px;
+      gap: 30px;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.1);
     }
 
     .contact-general-info {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 30px;
     }
 
     .contact-general-info p {
-      font-size: 0.85rem;
-      gap: 8px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .social-links a {
-      width: 38px;
-      height: 38px;
-      font-size: 1.1rem;
+    .contact-general-info i {
+      color: var(--primary);
     }
 
     .locations-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
     }
 
     .location-card {
-      padding: 20px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
     .location-card h4 {
-      font-size: 1.1rem;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .location-card h4 i {
+      color: var(--primary);
     }
 
     .map-container {
-      height: 220px;
+      width: 100%;
+      height: 300px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
     }
+
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--primary);
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .social-links a.instagram:hover { background: #E1306C; }
+    .social-links a.twitter:hover { background: #000000; }
+    .social-links a.facebook:hover { background: #1877F2; }
+    .social-links a.youtube:hover { background: #FF0000; }
 
     /* Footer */
     .footer {
       background: rgba(15, 23, 42, 0.95);
       backdrop-filter: blur(10px);
-      padding: 50px 0 25px;
-      margin-top: 40px;
-      border-radius: 40px 40px 0 0;
+      color: #cbd5e1;
+      padding: 80px 0 30px;
+      margin-top: 80px;
+      border-radius: 60px 60px 0 0;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 35px;
-      margin-bottom: 35px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 50px;
+      margin-bottom: 50px;
     }
 
     .footer-col h4 {
-      font-size: 1rem;
-      margin-bottom: 18px;
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-col h4:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary-light);
+      border-radius: 2px;
     }
 
     .footer-col p, .footer-col a {
-      font-size: 0.8rem;
-      margin-bottom: 8px;
+      color: #94a3b8;
+      text-decoration: none;
+      line-height: 1.8;
+      display: block;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .footer-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
     }
 
     .footer-social a {
-      width: 32px;
-      height: 32px;
-      font-size: 0.9rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .footer-social a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
     }
 
     .copyright {
-      font-size: 0.75rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 30px;
+      font-size: 0.95rem;
     }
 
-    /* Scroll top */
     .scroll-top {
-      width: 40px;
-      height: 40px;
-      bottom: 20px;
-      right: 20px;
-      font-size: 1rem;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: var(--shadow-md);
+      border: none;
+    }
+
+    .scroll-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
     }
 
     /* Responsive */
     @media (max-width: 900px) {
+      .navbar {
+        padding: 12px 20px;
+      }
       .navbar-container {
         flex-direction: column;
       }
       .nav-links {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 12px;
+        gap: 15px;
       }
       .hero {
         text-align: center;
-        padding: 30px 25px;
+        padding: 50px 30px;
+      }
+      .hero-text .hero-title-large {
+        font-size: 3rem;
+      }
+      .hero-text .hero-subtitle {
+        font-size: 1.3rem;
       }
       .hero-img {
         display: none;
       }
-      .hero-text .hero-title-large {
-        font-size: 1.8rem;
-      }
       .main-content {
-        padding-top: 110px;
-      }
-      .section-title {
-        font-size: 1.5rem;
+        padding-top: 130px;
       }
       #mision, .colibri-section, .testimonial, .alianzas, .instagram-carousel, .video-section, .contact-section {
-        padding: 30px 25px;
+        padding: 40px 30px;
       }
       .carousel-slide img {
-        height: 280px;
+        height: 350px;
+      }
+      .logo-card {
+        min-width: 130px;
+        padding: 12px 18px;
+      }
+      .logo-card img {
+        max-height: 40px;
       }
     }
 
     @media (max-width: 600px) {
       .main-content {
-        padding-top: 130px;
+        padding-top: 160px;
       }
       .hero-text .hero-title-large {
-        font-size: 1.5rem;
+        font-size: 2.2rem;
+      }
+      .hero-text .hero-subtitle {
+        font-size: 1.1rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Navbar Fijo -->
   <nav class="navbar" id="navbar">
     <div class="navbar-container">
       <div class="logo">
@@ -685,13 +1083,13 @@
 
   <div class="main-content">
     <div class="container">
-      <!-- Hero -->
+      <!-- Hero Section -->
       <div id="inicio" class="hero">
         <div class="hero-text">
           <div class="colibri-badge">
             <i class="fa-solid fa-dove"></i> COLIBRÍ · CENTRO COMUNITARIO
           </div>
-          <div class="hero-title-large">FUNDACIÓN LUZ Y VIDA</div>
+          <div class="hero-title-large">FUNDACIÓN<br>LUZ Y VIDA</div>
           <div class="hero-subtitle">Protección a la infancia y la familia</div>
           <div class="hero-tagline">
             <i class="fa-solid fa-location-dot"></i> espacio de protección y convivencia
@@ -703,38 +1101,38 @@
         </div>
       </div>
 
-      <!-- Misión -->
+      <!-- Sección Misión -->
       <div id="mision">
         <h2 class="section-title">Nuestra causa</h2>
         <div class="mission-cards">
           <div class="card">
             <i class="fa-solid fa-school"></i>
             <h3>Aulas Comunitarias</h3>
-            <p>Nivelación académica para niños fuera del sistema escolar.</p>
+            <p>Nivelación académica para niños fuera del sistema, garantizando su reinserción escolar oportuna y exitosa.</p>
           </div>
           <div class="card">
             <i class="fa-solid fa-gavel"></i>
             <h3>Defensoría Gratuita</h3>
-            <p>Acompañamiento legal en casos de falta de partida de nacimiento.</p>
+            <p>Acompañamiento legal en casos de falta de partida de nacimiento, reconocimientos de paternidad y medidas de protección.</p>
           </div>
           <div class="card">
             <i class="fa-solid fa-brain"></i>
             <h3>Atención Psicosocial</h3>
-            <p>Apoyo emocional y prevención de violencia intrafamiliar.</p>
+            <p>Apoyo emocional integral, talleres de prevención de violencia intrafamiliar y promoción de la sana convivencia.</p>
           </div>
           <div class="card">
             <i class="fa-solid fa-balance-scale"></i>
             <h3>Asistencia Legal</h3>
-            <p>Orientación jurídica para familias en vulnerabilidad.</p>
+            <p>Orientación jurídica especializada para familias y menores en situación de vulnerabilidad extrema.</p>
           </div>
         </div>
       </div>
 
-      <!-- Colibrí -->
+      <!-- Centro Colibrí -->
       <div id="colibri" class="colibri-section">
         <div class="colibri-section-text">
           <h3><i class="fa-solid fa-dove"></i> Centro Comunitario "Colibrí"</h3>
-          <p>Ubicado en el sector Antonio José de Sucre, Petare. Un espacio seguro donde la educación es el verdadero motor del cambio social.</p>
+          <p>Ubicado en el sector Antonio José de Sucre, Petare. Un espacio seguro donde la educación es el verdadero motor del cambio social. Actualmente atendemos a menores que retornaron a Venezuela o que nunca tuvieron acceso al sistema escolar tradicional.</p>
           <p>Con el valioso apoyo de ACNUR, hemos instalado una moderna sala tecnológica y brindamos programas de nivelación acelerada.</p>
           <div class="colibri-stats">
             <div class="stat"><span>+189</span> Niños activos</div>
@@ -744,7 +1142,7 @@
         </div>
         <div class="colibri-section-img">
           <i class="fa-solid fa-chalkboard-user"></i>
-          <p style="font-size: 0.8rem; margin-top: 10px;">Aulas vivas de esperanza</p>
+          <p style="margin-top: 15px; font-weight: 600; font-size: 1.1rem;">Aulas vivas de esperanza</p>
         </div>
       </div>
 
@@ -754,11 +1152,11 @@
           <i class="fa-solid fa-user-graduate"></i>
         </div>
         <div class="testimonial-content">
-          <h3>Gloria Perdomo — Directora</h3>
-          <p>Profesora e investigadora en la UCAB, galardonada con el Premio de Derechos Humanos UCV. Bajo su liderazgo, la fundación ha sido reconocida por <strong>ACNUR Venezuela</strong> como referente nacional.</p>
+          <h3>Gloria Perdomo — Directora y defensora incansable</h3>
+          <p>Profesora e investigadora en la UCAB, y coordinadora nacional del Observatorio Venezolano de Violencia. Galardonada con el Premio de Derechos Humanos UCV – Embajada de Canadá. Bajo su liderazgo, la fundación ha sido reconocida internacionalmente por <strong>ACNUR Venezuela</strong> e IDENNA como un referente nacional en protección infantil.</p>
           <div class="quote">
-            <i class="fa-solid fa-quote-left" style="color: var(--primary-light); opacity: 0.5; margin-right: 8px;"></i>
-            Educar en derechos humanos es la única vía sostenible para romper los ciclos de violencia.
+            <i class="fa-solid fa-quote-left" style="color: var(--primary-light); opacity: 0.5; margin-right: 10px;"></i>
+            Educar en derechos humanos es la única vía sostenible para romper los ciclos de violencia y pobreza en nuestras comunidades.
           </div>
         </div>
       </div>
@@ -767,29 +1165,34 @@
       <div class="alianzas">
         <h3>Aliados que hacen posible el cambio</h3>
         <div class="logos">
-          <a href="https://www.acnur.org/donde-trabajamos/pais/venezuela/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.acnur.org/donde-trabajamos/pais/venezuela/" target="_blank" rel="noopener noreferrer" class="logo-acnur">
             <div class="logo-card">
-              <img src="https://www.acnur.org/themes/custom/project/images/logo/logo-es.svg" alt="ACNUR">
+              <img src="https://www.acnur.org/themes/custom/project/images/logo/logo-es.svg" alt="Logo ACNUR Venezuela" loading="lazy">
             </div>
           </a>
           <a href="https://www.unicef.org/venezuela/" target="_blank" rel="noopener noreferrer">
             <div class="logo-card">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/UNICEF_Logo.png/960px-UNICEF_Logo.png" alt="UNICEF">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/UNICEF_Logo.png/960px-UNICEF_Logo.png" alt="Logo UNICEF" loading="lazy">
             </div>
           </a>
           <a href="http://www.ucv.ve/" target="_blank" rel="noopener noreferrer">
             <div class="logo-card">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_Universidad_Central_de_Venezuela.svg/960px-Logo_Universidad_Central_de_Venezuela.svg.png" alt="UCV">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_Universidad_Central_de_Venezuela.svg/960px-Logo_Universidad_Central_de_Venezuela.svg.png" alt="Logo UCV" loading="lazy">
             </div>
           </a>
           <a href="https://www.ucab.edu.ve/" target="_blank" rel="noopener noreferrer">
             <div class="logo-card">
-              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/419728166_766954035476108_9201319637267695307_n.jpg?stp=c135.98.794.794a_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=P51nAVBHhRIQ7kNvwFIoxhh&_nc_oc=AdpEXVpzVa4Ug4ECsP2sn8o9EaEXAYWz55rMLMJRUSvRTC-EeSil4y5vLIKO16uZ1B8&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=JBUFWkWQTyh9wAKPWesJVA&_nc_ss=7a289&oh=00_Af9DVar-Z5MT0YvtunhMQRwlnMjiE76HtRDZVaHPYT3xag&oe=6A25602B" alt="UCAB">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/419728166_766954035476108_9201319637267695307_n.jpg?stp=c135.98.794.794a_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=P51nAVBHhRIQ7kNvwFIoxhh&_nc_oc=AdpEXVpzVa4Ug4ECsP2sn8o9EaEXAYWz55rMLMJRUSvRTC-EeSil4y5vLIKO16uZ1B8&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=JBUFWkWQTyh9wAKPWesJVA&_nc_ss=7a289&oh=00_Af9DVar-Z5MT0YvtunhMQRwlnMjiE76HtRDZVaHPYT3xag&oe=6A25602B" alt="Logo UCAB" loading="lazy">
             </div>
           </a>
           <a href="https://www.cruzrojavenezolana.org/" target="_blank" rel="noopener noreferrer">
             <div class="logo-card">
-              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/352718976_921871942207749_1070504529264999811_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=PUqbPTqOqcEQ7kNvwErlW1t&_nc_oc=AdqQajVN7tTNaZ_cwOeaaUF4Ijen1KtPj-veR1314dXMULwkwsZBGjQRoPkwPZnX730&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=rL51Bt4LwFbDELdMb5LmQw&_nc_ss=7a289&oh=00_Af_89EFc6g-E72pz-kJtFbWV_6LohDiXylGrk-gQXbFOyQ&oe=6A256492" alt="Cruz Roja">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/352718976_921871942207749_1070504529264999811_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=PUqbPTqOqcEQ7kNvwErlW1t&_nc_oc=AdqQajVN7tTNaZ_cwOeaaUF4Ijen1KtPj-veR1314dXMULwkwsZBGjQRoPkwPZnX730&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=rL51Bt4LwFbDELdMb5LmQw&_nc_ss=7a289&oh=00_Af_89EFc6g-E72pz-kJtFbWV_6LohDiXylGrk-gQXbFOyQ&oe=6A256492" alt="Logo CRV" loading="lazy">
+            </div>
+          </a>
+          <a href="https://www.alcaldiamunicipiosucre.gov.ve/public/cmdnna" target="_blank" rel="noopener noreferrer">
+            <div class="logo-card">
+              <img src="https://www.alcaldiamunicipiosucre.gov.ve/public/img/Institutos/Iconos/iconografia-43.png" alt="Logo CMDNNA" loading="lazy">
             </div>
           </a>
         </div>
@@ -797,49 +1200,79 @@
 
       <!-- Galería -->
       <div id="galeria" class="instagram-carousel">
-        <h3><i class="fa-brands fa-instagram"></i> Galería</h3>
+        <h3>
+          <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram"></i> Galería
+          </a>
+        </h3>
         <p>Acompañando a las familias de Petare, un día a la vez.</p>
         
         <div class="carousel-wrapper">
           <div class="carousel-track" id="carouselTrack">
             <div class="carousel-slide">
-              <img src="https://www.acnur.org/sites/default/files/styles/landscape_10/public/2026-03/aranza_i.webp?h=4233b947&itok=UeDbej1d&t=1773880171" alt="Voluntarios trabajando">
-              <div class="slide-overlay"><p>❤️ Trabajando junto a ACNUR</p></div>
+              <img src="https://www.acnur.org/sites/default/files/styles/landscape_10/public/2026-03/aranza_i.webp?h=4233b947&itok=UeDbej1d&t=1773880171" alt="Voluntarios de ACNUR trabajando en comunidad" loading="lazy">
+              <div class="slide-overlay"><p>❤️ 150 Me gusta<br><strong>fundaluzyvida</strong> Trabajando en el terreno junto a ACNUR por el futuro de nuestros niños. ✨</p></div>
             </div>
             <div class="carousel-slide">
-              <img src="https://www.acnur.org/sites/default/files/styles/d12/public/2026-03/aranza_iii.webp?itok=MczEB-XR&t=1773880544" alt="Entrega de materiales">
-              <div class="slide-overlay"><p>❤️ Juntos hacemos la diferencia</p></div>
+              <img src="https://www.acnur.org/sites/default/files/styles/d12/public/2026-03/aranza_iii.webp?itok=MczEB-XR&t=1773880544" alt="Entrega de materiales educativos" loading="lazy">
+              <div class="slide-overlay"><p>❤️ 234 Me gusta<br><strong>fundaluzyvida</strong> Juntos hacemos la diferencia. El apoyo de ACNUR es vital para Petare. 💙🇺🇳</p></div>
             </div>
             <div class="carousel-slide">
-              <img src="https://www.acnur.org/sites/default/files/styles/de2e/public/legacy-images/5c1da7562b6.webp?itok=d3oJ3Hg2&t=1673997873" alt="Niños en actividades">
-              <div class="slide-overlay"><p>❤️ Protegiendo sonrisas</p></div>
+              <img src="https://www.acnur.org/sites/default/files/styles/de2e/public/legacy-images/5c1da7562b6.webp?itok=d3oJ3Hg2&t=1673997873" alt="Niños en actividades recreativas" loading="lazy">
+              <div class="slide-overlay"><p>❤️ 214 Me gusta<br><strong>fundaluzyvida</strong> Protegiendo sonrisas y construyendo un entorno seguro para nuestra infancia. 🤝🫂</p></div>
             </div>
             <div class="carousel-slide">
-              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/481051831_626680213396407_990313324066312795_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=UncV38HBlbwQ7kNvwEemL6v&_nc_oc=AdpPGAG-rDPqaSonB1sKOVNHWE1MpwurwBI2rnDza6ZtbCkYC4qjJ8HbP-PnbrEZa8c&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=as8rAZUYw2L7pn14qNumaw&_nc_ss=7b289&oh=00_Af9nSTnx5fGHFWjrmtzTEyID9PGyOjKnlEv6SfYY-yOjIg&oe=6A257C1D" alt="Espacios de aprendizaje">
-              <div class="slide-overlay"><p>📚 Espacios comunitarios</p></div>
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/481051831_626680213396407_990313324066312795_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=UncV38HBlbwQ7kNvwEemL6v&_nc_oc=AdpPGAG-rDPqaSonB1sKOVNHWE1MpwurwBI2rnDza6ZtbCkYC4qjJ8HbP-PnbrEZa8c&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=as8rAZUYw2L7pn14qNumaw&_nc_ss=7b289&oh=00_Af9nSTnx5fGHFWjrmtzTEyID9PGyOjKnlEv6SfYY-yOjIg&oe=6A257C1D" alt="Espacios de aprendizaje comunitario" loading="lazy">
+              <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Espacios comunitarios llenos de aprendizaje y desarrollo integral. 📚✨</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/481269572_626680233396405_5120911193098100826_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=K9xxFklGdtYQ7kNvwE4t-tV&_nc_oc=AdospmFfbP-UZRH6x7zIQ9qR_LwMjYG0x_FjMpi6dVeLdjg6AzHCAPzEbfyi0VQVou0&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=I1_1vCASTSkNMiyXVyRItA&_nc_ss=7b289&oh=00_Af8sU8SRIjBpGMH1JB_coty5WaHtap8QVT40nhWQXmDxoQ&oe=6A2565DD" alt="Voluntarias enseñando en aula" loading="lazy">
+              <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Impulsando la educación comunitaria con dedicación y compromiso. 👩‍🏫❤️</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/481119485_626680230063072_1431035881945840748_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=uG4_ZEEGIYEQ7kNvwGjsN63&_nc_oc=AdrXdNjOElCw85VS6oJ_3dnWQkqbgHORjGaY19ORIPrnJMCvkblt8h6NoGxEozqlf7c&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=NSAyoDKzTLLYEyOvLuw-gQ&_nc_ss=7b2a8&oh=00_Af-RHhkFv6bEEROA9zx9EBdGM3TeQbU-jhb8yE0LeRnHBA&oe=6A2564A7" alt="Niños celebrando un logro" loading="lazy">
+              <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Cada logro de nuestros niños es un paso hacia un futuro mejor. 🌟🏽</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/480684126_621632003901228_8951865498168042141_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zi8DyyZbCHUQ7kNvwEs-Cgk&_nc_oc=AdrIKL-4iwge5Ro8gki4-UbbtCUaavohLOjV9y7oPQAriaYduYHwnrqRhMRbrHJoAMQ&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=2f6gMX4FST8tWb8x01Y4nw&_nc_ss=7b2a8&oh=00_Af81PM6KA8JaFxJLwINRSsTiqHvFBJG__h9qW8LnNjqbAA&oe=6A25522D" alt="Familia participando en taller" loading="lazy">
+              <div class="slide-overlay"><p><strong>fundaluzyvida</strong> Compartiendo sonrisas y construyendo redes de apoyo familiar. 🏡🤝</p></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-6/480660516_621503140580781_8632384667733939065_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Dnd8XlOAEIkQ7kNvwELht7g&_nc_oc=AdqGL75hsRLmgfsX6flLNFXZdLhncKtD2aEXyLxhlZ8f5eftCEwNw_F_pceLHfP4Pgs&_nc_zt=23&_nc_ht=scontent.fbla1-1.fna&_nc_gid=9a2y9MdihtsHnGSbsCUSrQ&_nc_ss=7b2a8&oh=00_Af8jcWxZcBtRKJNiTxe4DIf1XKyOFLym4gxGjKjeK3eikg&oe=6A2564C6" alt="Niños jugando en actividades recreativas" loading="lazy">
+              <div class="slide-overlay"><p><strong>fundaluzyvida</strong> El juego y la recreación son fundamentales para los derechos de la infancia. 🎈🎨</p></div>
             </div>
           </div>
-          <button class="carousel-btn prev" id="btnPrev"><i class="fa-solid fa-chevron-left"></i></button>
-          <button class="carousel-btn next" id="btnNext"><i class="fa-solid fa-chevron-right"></i></button>
+          
+          <button class="carousel-btn prev" id="btnPrev" aria-label="Imagen anterior"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="carousel-btn next" id="btnNext" aria-label="Imagen siguiente"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
+        
         <div class="carousel-dots" id="carouselDots"></div>
       </div>
 
-      <!-- Videos -->
+      <!-- Sección Videos -->
       <div id="videos" class="video-section">
-        <h3><i class="fa-brands fa-youtube"></i> Nuestros Videos</h3>
-        <p>Conoce más sobre nuestra labor en la comunidad.</p>
+        <h3><i class="fa-brands fa-youtube" style="color: #FF0000;"></i> Nuestros Videos</h3>
+        <p>Conoce más sobre nuestra labor y el impacto en la comunidad.</p>
+        
         <div class="video-grid">
           <div class="video-card open-video" data-video-id="yokf9ZSx-z0">
-            <img src="https://img.youtube.com/vi/yokf9ZSx-z0/hqdefault.jpg" alt="Video presentación">
+            <img src="https://img.youtube.com/vi/yokf9ZSx-z0/hqdefault.jpg" alt="Video presentación Fundación Luz y Vida" loading="lazy">
             <div class="play-button"><i class="fa-solid fa-play"></i></div>
           </div>
+          
           <div class="video-card open-video" data-video-id="wsbEZ43e5EA">
-            <img src="https://img.youtube.com/vi/wsbEZ43e5EA/hqdefault.jpg" alt="Testimonios">
+            <img src="https://img.youtube.com/vi/wsbEZ43e5EA/hqdefault.jpg" alt="Testimonios de la comunidad" loading="lazy">
             <div class="play-button"><i class="fa-solid fa-play"></i></div>
           </div>
+          
           <div class="video-card open-video" data-video-id="qZb1H8-otAY">
-            <img src="https://img.youtube.com/vi/qZb1H8-otAY/hqdefault.jpg" alt="Talleres educativos">
+            <img src="https://img.youtube.com/vi/qZb1H8-otAY/hqdefault.jpg" alt="Talleres educativos en Petare" loading="lazy">
+            <div class="play-button"><i class="fa-solid fa-play"></i></div>
+          </div>
+
+          <div class="video-card open-video" data-video-id="gMxRIG6H7vg">
+            <img src="https://img.youtube.com/vi/gMxRIG6H7vg/hqdefault.jpg" alt="Jornada de atención integral" loading="lazy">
             <div class="play-button"><i class="fa-solid fa-play"></i></div>
           </div>
         </div>
@@ -850,7 +1283,7 @@
         <div class="modal-content">
           <span class="close-modal" id="closeModal">×</span>
           <div class="iframe-container">
-            <iframe id="youtubeIframe" src="" allow="autoplay; encrypted-media;" allowfullscreen></iframe>
+            <iframe id="youtubeIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -859,34 +1292,44 @@
       <div id="contacto" class="contact-section">
         <div class="contact-general">
           <div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 15px;">Ponte en contacto</h3>
+            <h3 style="font-size: 2rem; color: var(--text-main); margin-bottom: 10px;">Ponte en contacto</h3>
             <div class="contact-general-info">
-              <p><i class="fa-solid fa-clock"></i> Lunes a Viernes, 9am - 4pm</p>
-              <p><i class="fa-solid fa-phone-alt"></i> +58 212 123 4567</p>
-              <p><i class="fa-solid fa-envelope"></i> contacto@luzyvidapetare.org</p>
+              <p><i class="fa-solid fa-clock"></i> <span><strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 4:00 PM</span></p>
+              <p><i class="fa-solid fa-phone-alt"></i> <span>+58 212 123 4567 (Oficina)</span></p>
+              <p><i class="fa-solid fa-envelope"></i> <span>contacto@luzyvidapetare.org</span></p>
             </div>
           </div>
+          
           <div class="social-links">
-            <a href="https://www.instagram.com/fundaluzyvida/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://twitter.com/Fundaluzyvida" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.facebook.com/people/Fundaci%C3%B3n-Luz-y-Vida/100081633019094/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.youtube.com/@fundacionluzyvida7545" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer" class="instagram" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com/Fundaluzyvida" target="_blank" rel="noopener noreferrer" class="twitter" title="Twitter / X">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/people/Fundaci%C3%B3n-Luz-y-Vida/100081633019094/" target="_blank" rel="noopener noreferrer" class="facebook" title="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.youtube.com/@fundacionluzyvida7545" target="_blank" rel="noopener noreferrer" class="youtube" title="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
           </div>
         </div>
         
         <div class="locations-container">
           <div class="location-card">
             <h4><i class="fa-solid fa-building-flag"></i> Sede Principal</h4>
-            <p>Calle Madeleine, Casa N° 12-07.<br>Casco Histórico de Petare, Miranda.</p>
+            <p><i class="fa-solid fa-map-marker-alt" style="color: var(--primary); margin-right: 8px;"></i> Calle Madeleine, Casa N° 12-07.<br>Casco Histórico Colonial de Petare, Municipio Sucre, Miranda, Venezuela.</p>
             <div class="map-container">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.3644033284!2d-66.8087098!3d10.4767894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a59b998daf48b%3A0xc8cb9129c9603d75!2sFUNDACION%20LUZ%20Y%20VIDA!5e0!3m2!1ses!2sve!4v1700000000000!5m2!1ses!2sve" loading="lazy"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.3644033284!2d-66.8087098!3d10.4767894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a59b998daf48b%3A0xc8cb9129c9603d75!2sFUNDACION%20LUZ%20Y%20VIDA!5e0!3m2!1ses!2sve!4v1700000000000!5m2!1ses!2sve" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación sede principal Fundación Luz y Vida"></iframe>
             </div>
           </div>
+          
           <div class="location-card">
-            <h4><i class="fa-solid fa-dove"></i> Centro Colibrí</h4>
-            <p>Sector Antonio José de Sucre.<br>Petare, Municipio Sucre, Miranda.</p>
+            <h4><i class="fa-solid fa-dove"></i> Centro Comunitario "Colibrí"</h4>
+            <p><i class="fa-solid fa-map-marker-alt" style="color: var(--primary); margin-right: 8px;"></i> Sector Antonio José de Sucre.<br>Petare, Municipio Sucre, Miranda, Venezuela.</p>
             <div class="map-container">
-              <iframe src="https://maps.google.com/maps?q=10.4959375,-66.7942656&hl=es&z=17&output=embed" loading="lazy"></iframe>
+              <iframe src="https://maps.google.com/maps?q=10.4959375,-66.7942656&hl=es&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación Centro Comunitario Colibrí"></iframe>
             </div>
           </div>
         </div>
@@ -900,164 +1343,55 @@
       <div class="footer-grid">
         <div class="footer-col">
           <h4>Fundación Luz y Vida</h4>
-          <p>Transformación comunitaria desde 1994 en Petare.</p>
+          <p>Liderando la transformación comunitaria desde 1994 en Petare. Fieles defensores de los derechos humanos de niños, niñas y adolescentes.</p>
         </div>
         <div class="footer-col">
-          <h4>Programas</h4>
-          <a href="#mision">Aulas Comunitarias</a>
-          <a href="#mision">Defensoría Infantil</a>
-          <a href="#colibri">Centro El Colibrí</a>
+          <h4>Programas Activos</h4>
+          <a href="#mision"><i class="fa-solid fa-angle-right" style="margin-right: 8px; font-size: 0.8rem;"></i> Aulas Comunitarias</a>
+          <a href="#mision"><i class="fa-solid fa-angle-right" style="margin-right: 8px; font-size: 0.8rem;"></i> Defensoría Infantil</a>
+          <a href="#colibri"><i class="fa-solid fa-angle-right" style="margin-right: 8px; font-size: 0.8rem;"></i> Centro El Colibrí</a>
+          <a href="#mision"><i class="fa-solid fa-angle-right" style="margin-right: 8px; font-size: 0.8rem;"></i> Atención Psicosocial</a>
         </div>
         <div class="footer-col">
-          <h4>Legal</h4>
+          <h4>Información Legal</h4>
           <p>Registro ONG Nº 3456</p>
           <p>RIF J-30789654-2</p>
+          <a href="#" style="text-decoration: underline; margin-top: 10px;">Política de Transparencia y Cuentas</a>
         </div>
         <div class="footer-col">
-          <h4>Síguenos</h4>
+          <h4>Comunidad</h4>
+          <p>Suscríbete a nuestro boletín mensual para conocer el impacto de tus aportes.</p>
           <div class="footer-social">
-            <a href="https://www.instagram.com/fundaluzyvida/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://x.com/Fundaluzyvida" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.facebook.com/people/Fundaci%C3%B3n-Luz-y-Vida/100081633019094/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer" class="instagram-footer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/Fundaluzyvida" target="_blank" rel="noopener noreferrer" class="twitter-footer" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.facebook.com/people/Fundaci%C3%B3n-Luz-y-Vida/100081633019094/" target="_blank" rel="noopener noreferrer" class="facebook-footer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.youtube.com/@fundacionluzyvida7545" target="_blank" rel="noopener noreferrer" class="youtube-footer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
       </div>
       <div class="copyright">
-        <p>© 2026 Fundación Luz y Vida · Hecho con <i class="fa-solid fa-heart"></i> para Petare.</p>
+        <p>© 2026 Fundación Luz y Vida · Hecho con <i class="fa-solid fa-heart" style="color: #e53e3e; margin: 0 4px;"></i> para la comunidad de Petare.</p>
       </div>
     </div>
   </footer>
 
-  <button class="scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
-
-  <style>
-    /* Estilos adicionales para modal y carrusel */
-    .video-modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      align-items: center;
-      justify-content: center;
-    }
-    .video-modal.active { display: flex; }
-    .modal-content {
-      position: relative;
-      width: 90%;
-      max-width: 800px;
-      background: #000;
-      border-radius: 12px;
-    }
-    .close-modal {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      color: white;
-      font-size: 28px;
-      cursor: pointer;
-    }
-    .iframe-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-    }
-    .iframe-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-    }
-    .carousel-track {
-      display: flex;
-      transition: transform 0.4s ease;
-    }
-    .carousel-slide { min-width: 100%; position: relative; }
-    .slide-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      color: white;
-      padding: 40px 20px 15px;
-      text-align: left;
-    }
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 15px;
-    }
-    .dot {
-      width: 8px;
-      height: 8px;
-      background: #cbd5e1;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-    .dot.active { background: var(--primary); transform: scale(1.2); }
-    .video-card {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      cursor: pointer;
-      aspect-ratio: 16/9;
-    }
-    .video-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FF0000;
-      font-size: 1.5rem;
-    }
-    .scroll-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--primary);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-      border: none;
-      z-index: 999;
-    }
-    .scroll-top.show { opacity: 1; visibility: visible; }
-  </style>
+  <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
   <script>
-    // Detectar imagen de fondo
+    // Detectar si la imagen escritorio.jpg existe
     const imgTest = new Image();
-    imgTest.onerror = () => document.body.classList.add('no-image');
+    imgTest.onload = function() {
+      console.log('escritorio.jpg cargada correctamente como fondo de página');
+    };
+    imgTest.onerror = function() {
+      document.body.classList.add('no-image');
+      console.log('Usando imagen de respaldo');
+    };
     imgTest.src = 'escritorio.jpg';
 
-    // Scroll suave
+    // Scroll Suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -1065,83 +1399,117 @@
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
-          const offset = 80;
-          const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({ top: pos, behavior: "smooth" });
+          const headerOffset = 90;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
       });
     });
 
-    // Navbar scroll effect
+    // Navbar efecto scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
-      const scrollTop = document.getElementById('scrollTop');
-      if (scrollTop) scrollTop.classList.toggle('show', window.scrollY > 300);
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
     });
 
     // Carrusel
     const track = document.getElementById('carouselTrack');
-    const slides = track ? Array.from(track.children) : [];
+    const slides = Array.from(track.children);
     const btnNext = document.getElementById('btnNext');
     const btnPrev = document.getElementById('btnPrev');
     const dotsNav = document.getElementById('carouselDots');
+    const wrapper = document.querySelector('.carousel-wrapper');
     
-    if (slides.length > 0 && dotsNav) {
-      slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.setAttribute('data-index', i);
-        dotsNav.appendChild(dot);
-      });
-      const dots = Array.from(dotsNav.children);
-      let currentIndex = 0;
-      const updateCarousel = (index) => {
-        track.style.transform = `translateX(-${index * 100}%)`;
-        dots.forEach(d => d.classList.remove('active'));
-        dots[index].classList.add('active');
-      };
-      btnNext?.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel(currentIndex);
-      });
-      btnPrev?.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel(currentIndex);
-      });
-      dotsNav.addEventListener('click', (e) => {
-        const dot = e.target.closest('.dot');
-        if (dot) {
-          currentIndex = parseInt(dot.dataset.index);
-          updateCarousel(currentIndex);
-        }
-      });
-    }
+    let isHovering = false;
+    
+    slides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      dot.setAttribute('data-index', index);
+      dot.setAttribute('aria-label', `Ir a imagen ${index + 1}`);
+      dotsNav.appendChild(dot);
+    });
 
-    // Modal de video
-    const modal = document.getElementById('videoModal');
-    const iframe = document.getElementById('youtubeIframe');
-    const closeModal = document.getElementById('closeModal');
-    document.querySelectorAll('.open-video').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const videoId = btn.dataset.videoId;
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-        modal.classList.add('active');
+    const dots = Array.from(dotsNav.children);
+    let currentIndex = 0;
+
+    const updateCarousel = (index) => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    };
+
+    btnNext.addEventListener('click', () => {
+      currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+      updateCarousel(currentIndex);
+    });
+
+    btnPrev.addEventListener('click', () => {
+      currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+      updateCarousel(currentIndex);
+    });
+
+    dotsNav.addEventListener('click', e => {
+      const targetDot = e.target.closest('button');
+      if (!targetDot) return;
+      currentIndex = parseInt(targetDot.getAttribute('data-index'));
+      updateCarousel(currentIndex);
+    });
+
+    wrapper.addEventListener('mouseenter', () => { isHovering = true; });
+    wrapper.addEventListener('mouseleave', () => { isHovering = false; });
+
+    // Modal Video
+    const videoModal = document.getElementById('videoModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const youtubeIframe = document.getElementById('youtubeIframe');
+    const videoTriggers = document.querySelectorAll('.open-video');
+
+    videoTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const videoId = trigger.getAttribute('data-video-id');
+        youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+        videoModal.classList.add('active');
         document.body.style.overflow = 'hidden';
       });
     });
+
     const closeVideo = () => {
-      modal.classList.remove('active');
-      iframe.src = '';
+      videoModal.classList.remove('active');
+      youtubeIframe.src = '';
       document.body.style.overflow = '';
     };
-    closeModal?.addEventListener('click', closeVideo);
-    modal?.addEventListener('click', (e) => { if (e.target === modal) closeVideo(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal?.classList.contains('active')) closeVideo(); });
+
+    closeModalBtn.addEventListener('click', closeVideo);
+    videoModal.addEventListener('click', (e) => {
+      if(e.target === videoModal) closeVideo();
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+        closeVideo();
+      }
+    });
 
     // Botón subir
-    document.getElementById('scrollTop')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
