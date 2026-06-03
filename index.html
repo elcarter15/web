@@ -564,7 +564,7 @@
       max-height: 65px;
     }
 
-    /* Carrusel - Fondo pastel */
+    /* Carrusel */
     .instagram-carousel {
       background: var(--pastel-lilac);
       backdrop-filter: blur(2px);
@@ -628,7 +628,6 @@
       display: block;
     }
 
-    /* Overlay del carrusel */
     .slide-overlay {
       position: absolute;
       bottom: 0;
@@ -699,7 +698,7 @@
       transform: scale(1.2);
     }
 
-    /* Videos con reseñas */
+    /* Videos - con reseña debajo */
     .video-section h3 {
       font-size: 2.5rem;
       margin-bottom: 10px;
@@ -717,20 +716,27 @@
       margin: 0 auto;
     }
 
-    .video-card {
-      position: relative;
+    .video-item {
+      display: flex;
+      flex-direction: column;
       border-radius: var(--radius-lg);
       overflow: hidden;
+      background: white;
       box-shadow: var(--shadow-md);
-      aspect-ratio: 16 / 9;
-      background: #0f172a;
-      cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .video-card:hover {
+    .video-item:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-lg);
+    }
+
+    .video-card {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #0f172a;
+      cursor: pointer;
+      overflow: hidden;
     }
 
     .video-card img {
@@ -766,35 +772,48 @@
       transform: translate(-50%, -50%) scale(1.1);
     }
 
-    /* Reseña del video */
+    /* Reseña del video debajo */
     .video-review {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-      color: white;
-      padding: 40px 15px 12px;
+      padding: 20px;
+      background: white;
       text-align: left;
-      pointer-events: none;
+    }
+
+    .video-review h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .video-review p {
-      font-size: 0.85rem;
-      margin: 0;
-      line-height: 1.4;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-    }
-
-    .video-review strong {
-      color: #FF0000;
       font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
     }
 
-    .video-review .video-stats {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.8);
+    .video-stats {
+      display: flex;
+      gap: 15px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid #e2e8f0;
+      padding-top: 12px;
       margin-top: 5px;
+    }
+
+    .video-stats span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .video-stats i {
+      color: var(--primary-light);
     }
 
     /* Modal Video */
@@ -1167,6 +1186,8 @@
       <!-- Hero Section -->
       <div id="inicio" class="hero">
         <div class="hero-text">
+          <div class="colibri-badge">
+            <i class="fa-solid fa-dove"></i> COLIBRÍ · CENTRO COMUNITARIO
           </div>
           <div class="hero-title-large">FUNDACIÓN<br>LUZ Y VIDA</div>
           <div class="hero-subtitle">Protección a la infancia y la familia</div>
@@ -1277,7 +1298,7 @@
         </div>
       </div>
 
-      <!-- Galería - Carrusel con fondo pastel -->
+      <!-- Galería - Carrusel -->
       <div id="galeria" class="instagram-carousel">
         <h3>
           <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer">
@@ -1329,45 +1350,77 @@
         <div class="carousel-dots" id="carouselDots"></div>
       </div>
 
-      <!-- Sección Videos con reseñas -->
+      <!-- Sección Videos con reseña debajo -->
       <div id="videos" class="video-section">
         <h3><i class="fa-brands fa-youtube" style="color: #FF0000;"></i> Nuestros Videos</h3>
         <p>Conoce más sobre nuestra labor y el impacto en la comunidad.</p>
         
         <div class="video-grid">
-          <div class="video-card open-video" data-video-id="yokf9ZSx-z0">
-            <img src="https://img.youtube.com/vi/yokf9ZSx-z0/hqdefault.jpg" alt="Video presentación Fundación Luz y Vida" loading="lazy">
-            <div class="play-button"><i class="fa-solid fa-play"></i></div>
+          <!-- Video 1 -->
+          <div class="video-item">
+            <div class="video-card open-video" data-video-id="yokf9ZSx-z0">
+              <img src="https://img.youtube.com/vi/yokf9ZSx-z0/hqdefault.jpg" alt="Video presentación Fundación Luz y Vida" loading="lazy">
+              <div class="play-button"><i class="fa-solid fa-play"></i></div>
+            </div>
             <div class="video-review">
-              <p><strong>🎬 Presentación institucional</strong><br>Conoce nuestra misión y el trabajo que realizamos diariamente en Petare.</p>
-              <div class="video-stats">👁️ 2.5K vistas · ❤️ 189</div>
+              <h4><i class="fa-solid fa-video" style="color: #FF0000;"></i> Presentación institucional</h4>
+              <p>Conoce nuestra misión y el trabajo que realizamos diariamente en Petare para proteger a la infancia y garantizar sus derechos.</p>
+              <div class="video-stats">
+                <span><i class="fa-regular fa-eye"></i> 2.5K vistas</span>
+                <span><i class="fa-regular fa-heart"></i> 189 me gusta</span>
+                <span><i class="fa-regular fa-comment"></i> 24 comentarios</span>
+              </div>
             </div>
           </div>
           
-          <div class="video-card open-video" data-video-id="wsbEZ43e5EA">
-            <img src="https://img.youtube.com/vi/wsbEZ43e5EA/hqdefault.jpg" alt="Testimonios de la comunidad" loading="lazy">
-            <div class="play-button"><i class="fa-solid fa-play"></i></div>
+          <!-- Video 2 -->
+          <div class="video-item">
+            <div class="video-card open-video" data-video-id="wsbEZ43e5EA">
+              <img src="https://img.youtube.com/vi/wsbEZ43e5EA/hqdefault.jpg" alt="Testimonios de la comunidad" loading="lazy">
+              <div class="play-button"><i class="fa-solid fa-play"></i></div>
+            </div>
             <div class="video-review">
-              <p><strong>🗣️ Testimonios de la comunidad</strong><br>Familias y niños comparten cómo la fundación ha transformado sus vidas.</p>
-              <div class="video-stats">👁️ 3.2K vistas · ❤️ 234</div>
+              <h4><i class="fa-solid fa-users" style="color: #FF0000;"></i> Testimonios de la comunidad</h4>
+              <p>Familias y niños comparten cómo la fundación ha transformado sus vidas con educación, protección y oportunidades.</p>
+              <div class="video-stats">
+                <span><i class="fa-regular fa-eye"></i> 3.2K vistas</span>
+                <span><i class="fa-regular fa-heart"></i> 234 me gusta</span>
+                <span><i class="fa-regular fa-comment"></i> 31 comentarios</span>
+              </div>
             </div>
           </div>
           
-          <div class="video-card open-video" data-video-id="qZb1H8-otAY">
-            <img src="https://img.youtube.com/vi/qZb1H8-otAY/hqdefault.jpg" alt="Talleres educativos en Petare" loading="lazy">
-            <div class="play-button"><i class="fa-solid fa-play"></i></div>
+          <!-- Video 3 -->
+          <div class="video-item">
+            <div class="video-card open-video" data-video-id="qZb1H8-otAY">
+              <img src="https://img.youtube.com/vi/qZb1H8-otAY/hqdefault.jpg" alt="Talleres educativos en Petare" loading="lazy">
+              <div class="play-button"><i class="fa-solid fa-play"></i></div>
+            </div>
             <div class="video-review">
-              <p><strong>📚 Talleres educativos</strong><br>Nuestras aulas comunitarias llenas de aprendizaje y esperanza.</p>
-              <div class="video-stats">👁️ 1.8K vistas · ❤️ 156</div>
+              <h4><i class="fa-solid fa-book-open" style="color: #FF0000;"></i> Talleres educativos</h4>
+              <p>Nuestras aulas comunitarias llenas de aprendizaje y esperanza. Niños y niñas recuperando su derecho a la educación.</p>
+              <div class="video-stats">
+                <span><i class="fa-regular fa-eye"></i> 1.8K vistas</span>
+                <span><i class="fa-regular fa-heart"></i> 156 me gusta</span>
+                <span><i class="fa-regular fa-comment"></i> 18 comentarios</span>
+              </div>
             </div>
           </div>
 
-          <div class="video-card open-video" data-video-id="gMxRIG6H7vg">
-            <img src="https://img.youtube.com/vi/gMxRIG6H7vg/hqdefault.jpg" alt="Jornada de atención integral" loading="lazy">
-            <div class="play-button"><i class="fa-solid fa-play"></i></div>
+          <!-- Video 4 -->
+          <div class="video-item">
+            <div class="video-card open-video" data-video-id="gMxRIG6H7vg">
+              <img src="https://img.youtube.com/vi/gMxRIG6H7vg/hqdefault.jpg" alt="Jornada de atención integral" loading="lazy">
+              <div class="play-button"><i class="fa-solid fa-play"></i></div>
+            </div>
             <div class="video-review">
-              <p><strong>🤝 Jornada de atención integral</strong><br>Un día de servicios médicos, legales y recreativos para toda la familia.</p>
-              <div class="video-stats">👁️ 4.1K vistas · ❤️ 312</div>
+              <h4><i class="fa-solid fa-hand-holding-heart" style="color: #FF0000;"></i> Jornada de atención integral</h4>
+              <p>Un día de servicios médicos, legales y recreativos para toda la familia. Más de 200 personas atendidas.</p>
+              <div class="video-stats">
+                <span><i class="fa-regular fa-eye"></i> 4.1K vistas</span>
+                <span><i class="fa-regular fa-heart"></i> 312 me gusta</span>
+                <span><i class="fa-regular fa-comment"></i> 45 comentarios</span>
+              </div>
             </div>
           </div>
         </div>
