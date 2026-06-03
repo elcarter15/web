@@ -922,10 +922,21 @@
       border-bottom: 1px solid rgba(30, 41, 59, 0.1);
     }
 
+    /* Estilos para el contenedor de texto de contacto */
+    .contact-info-text {
+      flex: 2;
+    }
+    .contact-info-text h3 {
+      font-size: 2rem;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
     .contact-general-info {
       display: flex;
       flex-wrap: wrap;
       gap: 30px;
+      margin-top: 15px;
     }
 
     .contact-general-info p {
@@ -939,6 +950,46 @@
     .contact-general-info i {
       color: var(--primary);
     }
+
+    /* Redes sociales alineadas a la derecha */
+    .contact-social {
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-end;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--primary);
+      font-size: 1.6rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .social-links a.instagram:hover { background: #E1306C; }
+    .social-links a.twitter:hover { background: #000000; }
+    .social-links a.facebook:hover { background: #1877F2; }
+    .social-links a.youtube:hover { background: #FF0000; }
 
     .locations-container {
       display: grid;
@@ -983,39 +1034,6 @@
       height: 100%;
       border: none;
     }
-
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #ffffff;
-      color: var(--primary);
-      font-size: 1.5rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .social-links a:hover {
-      transform: translateY(-5px);
-      background: var(--primary);
-      color: white;
-      box-shadow: var(--shadow-md);
-    }
-
-    .social-links a.instagram:hover { background: #E1306C; }
-    .social-links a.twitter:hover { background: #000000; }
-    .social-links a.facebook:hover { background: #1877F2; }
-    .social-links a.youtube:hover { background: #FF0000; }
 
     /* Footer */
     .footer {
@@ -1179,6 +1197,18 @@
       }
       .video-grid {
         gap: 20px;
+      }
+      .contact-general {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .contact-social {
+        margin-left: 0;
+        width: 100%;
+      }
+      .social-links {
+        justify-content: flex-start;
+        margin-top: 15px;
       }
     }
 
@@ -1492,11 +1522,11 @@
         </div>
       </div>
 
-      <!-- Contacto -->
+      <!-- Contacto - Redes sociales alineadas a la derecha -->
       <div id="contacto" class="contact-section">
         <div class="contact-general">
-          <div>
-            <h3 style="font-size: 2rem; color: var(--text-main); margin-bottom: 10px;">Ponte en contacto</h3>
+          <div class="contact-info-text">
+            <h3>Ponte en contacto</h3>
             <div class="contact-general-info">
               <p><i class="fa-solid fa-clock"></i> <span><strong>Horario Fundación:</strong> Lunes a Viernes, 9:00 AM - 4:00 PM</span></p>
               <p><i class="fa-solid fa-phone-alt"></i> <span>+5802122390472 (Oficina)</span></p>
@@ -1506,21 +1536,23 @@
               <p><i class="fa-solid fa-phone-alt"></i> <span>+5802 (Oficina)</span></p>
               <p><i class="fa-solid fa-envelope"></i> <span>colibri@fundaluzyvida.org.ve</span></p>
             </div>
-         </div>
+          </div>
           
-          <div class="social-links">
-             <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer" class="instagram" title="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://twitter.com/Fundaluzyvida" target="_blank" rel="noopener noreferrer" class="twitter" title="Twitter / X">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-            <a href="https://www.facebook.com/people/Fundaci%C3%B3n-Luz-y-Vida/100081633019094/" target="_blank" rel="noopener noreferrer" class="facebook" title="Facebook">
-              <i class="fa-brands fa-facebook-f"></i>
-            </a>
-            <a href="https://www.youtube.com/@fundacionluzyvida7545" target="_blank" rel="noopener noreferrer" class="youtube" title="YouTube">
-              <i class="fa-brands fa-youtube"></i>
-            </a>
+          <div class="contact-social">
+            <div class="social-links">
+               <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer" class="instagram" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://twitter.com/Fundaluzyvida" target="_blank" rel="noopener noreferrer" class="twitter" title="Twitter / X">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a href="https://www.facebook.com/people/Fundaci%C3%B3n-Luz-y-Vida/100081633019094/" target="_blank" rel="noopener noreferrer" class="facebook" title="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="https://www.youtube.com/@fundacionluzyvida7545" target="_blank" rel="noopener noreferrer" class="youtube" title="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+            </div>
           </div>
         </div> 
       
