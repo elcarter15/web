@@ -278,6 +278,18 @@
       flex: 1.2;
     }
 
+    .hero-text .ong-badge {
+      display: inline-block;
+      background: rgba(11, 94, 66, 0.2);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
     .hero-text .hero-title-large {
       font-size: 4.5rem;
       font-weight: 800;
@@ -351,18 +363,6 @@
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-15px); }
-    }
-
-    .colibri-badge {
-      display: inline-block;
-      background: rgba(11, 94, 66, 0.15);
-      padding: 8px 20px;
-      border-radius: 40px;
-      margin-bottom: 20px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--primary);
-      letter-spacing: 1px;
     }
 
     /* Sección Misión */
@@ -525,12 +525,13 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
-      align-items: center;
+      align-items: stretch;
     }
 
     .logos a {
       text-decoration: none;
       transition: transform 0.3s ease;
+      display: block;
     }
 
     .logos a:hover {
@@ -543,6 +544,7 @@
       border-radius: 60px;
       box-shadow: var(--shadow-sm);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       min-width: 180px;
@@ -557,6 +559,14 @@
       max-height: 55px;
       width: auto;
       object-fit: contain;
+    }
+
+    .logo-card .logo-name {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-align: center;
     }
 
     .logo-acnur img {
@@ -1185,6 +1195,7 @@
       <!-- Hero Section -->
       <div id="inicio" class="hero">
         <div class="hero-text">
+          <div class="ong-badge">Organización no gubernamental (ONG)</div>
           <div class="hero-title-large">FUNDACIÓN<br>LUZ Y VIDA</div>
           <div class="hero-subtitle">Protección a la infancia y la familia</div>
           <div class="hero-tagline">
@@ -1257,38 +1268,44 @@
         </div>
       </div>
 
-      <!-- Alianzas -->
+      <!-- Alianzas con nombres debajo de cada logo -->
       <div class="alianzas">
         <h3>Aliados que hacen posible el cambio</h3>
         <div class="logos">
-          <a href="https://www.acnur.org/donde-trabajamos/pais/venezuela/" target="_blank" rel="noopener noreferrer" class="logo-acnur">
+          <a href="https://www.acnur.org/donde-trabajamos/pais/venezuela/" target="_blank" rel="noopener noreferrer">
             <div class="logo-card">
               <img src="https://www.acnur.org/themes/custom/project/images/logo/logo-es.svg" alt="Logo ACNUR Venezuela" loading="lazy">
+              <span class="logo-name">ACNUR</span>
             </div>
           </a>
           <a href="https://www.unicef.org/venezuela/" target="_blank" rel="noopener noreferrer">
             <div class="logo-card">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/UNICEF_Logo.png/960px-UNICEF_Logo.png" alt="Logo UNICEF" loading="lazy">
+              <span class="logo-name">UNICEF</span>
             </div>
           </a>
           <a href="http://www.ucv.ve/" target="_blank" rel="noopener noreferrer">
             <div class="logo-card">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_Universidad_Central_de_Venezuela.svg/960px-Logo_Universidad_Central_de_Venezuela.svg.png" alt="Logo UCV" loading="lazy">
+              <span class="logo-name">UCV</span>
             </div>
           </a>
           <a href="https://www.ucab.edu.ve/" target="_blank" rel="noopener noreferrer">
             <div class="logo-card">
               <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/419728166_766954035476108_9201319637267695307_n.jpg?stp=c135.98.794.794a_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=P51nAVBHhRIQ7kNvwFIoxhh&_nc_oc=AdpEXVpzVa4Ug4ECsP2sn8o9EaEXAYWz55rMLMJRUSvRTC-EeSil4y5vLIKO16uZ1B8&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=JBUFWkWQTyh9wAKPWesJVA&_nc_ss=7a289&oh=00_Af9DVar-Z5MT0YvtunhMQRwlnMjiE76HtRDZVaHPYT3xag&oe=6A25602B" alt="Logo UCAB" loading="lazy">
+              <span class="logo-name">UCAB</span>
             </div>
           </a>
           <a href="https://www.cruzrojavenezolana.org/" target="_blank" rel="noopener noreferrer">
             <div class="logo-card">
-              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/352718976_921871942207749_1070504529264999811_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=PUqbPTqOqcEQ7kNvwErlW1t&_nc_oc=AdqQajVN7tTNaZ_cwOeaaUF4Ijen1KtPj-veR1314dXMULwkwsZBGjQRoPkwPZnX730&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=rL51Bt4LwFbDELdMb5LmQw&_nc_ss=7a289&oh=00_Af_89EFc6g-E72pz-kJtFbWV_6LohDiXylGrk-gQXbFOyQ&oe=6A256492" alt="Logo CRV" loading="lazy">
+              <img src="https://scontent.fbla1-1.fna.fbcdn.net/v/t39.30808-1/352718976_921871942207749_1070504529264999811_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=PUqbPTqOqcEQ7kNvwErlW1t&_nc_oc=AdqQajVN7tTNaZ_cwOeaaUF4Ijen1KtPj-veR1314dXMULwkwsZBGjQRoPkwPZnX730&_nc_zt=24&_nc_ht=scontent.fbla1-1.fna&_nc_gid=rL51Bt4LwFbDELdMb5LmQw&_nc_ss=7a289&oh=00_Af_89EFc6g-E72pz-kJtFbWV_6LohDiXylGrk-gQXbFOyQ&oe=6A256492" alt="Logo Cruz Roja Venezolana" loading="lazy">
+              <span class="logo-name">Cruz Roja<br>Venezolana</span>
             </div>
           </a>
           <a href="https://www.alcaldiamunicipiosucre.gov.ve/public/cmdnna" target="_blank" rel="noopener noreferrer">
             <div class="logo-card">
               <img src="https://www.alcaldiamunicipiosucre.gov.ve/public/img/Institutos/Iconos/iconografia-43.png" alt="Logo CMDNNA" loading="lazy">
+              <span class="logo-name">CMDNNA</span>
             </div>
           </a>
         </div>
@@ -1440,7 +1457,7 @@
             <div class="contact-general-info">
               <p><i class="fa-solid fa-clock"></i> <span><strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 4:00 PM</span></p>
               <p><i class="fa-solid fa-phone-alt"></i> <span>+5802122390472 (Oficina)</span></p>
-              <p><i class="fa-solid fa-envelope"></i> <span>contacto@lfundaluzyvida.org.ve</span></p>
+              <p><i class="fa-solid fa-envelope"></i> <span>contacto@fundaluzyvida.org.ve</span></p>
             </div>
           </div>
           
