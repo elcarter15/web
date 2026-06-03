@@ -9,15 +9,15 @@
   <title>Fundación Luz y Vida</title>
   
   <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="assets/css/style.css?v=4"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' text-anchor='middle' dy='.3em' font-size='80' fill='%230b5e42'>🕊️</text></svg>">
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    /* Variables CSS */
+    /* Variables CSS - Colores pasteles */
     :root {
       --primary: #0b5e42;
       --primary-light: #2c9c6e;
@@ -26,12 +26,19 @@
       --accent-hover: #c53030;
       --text-main: #1e293b;
       --text-muted: #475569;
-      --bg-body: #f1f5f9;
       --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
       --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
       --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
       --radius-lg: 32px;
       --radius-xl: 48px;
+      
+      /* Colores pasteles para contenedores */
+      --pastel-mint: rgba(152, 201, 185, 0.88);
+      --pastel-lavender: rgba(198, 185, 216, 0.88);
+      --pastel-peach: rgba(255, 218, 193, 0.88);
+      --pastel-sky: rgba(167, 207, 223, 0.88);
+      --pastel-rose: rgba(248, 202, 202, 0.88);
+      --pastel-cream: rgba(252, 242, 220, 0.88);
     }
 
     * {
@@ -48,7 +55,7 @@
       position: relative;
     }
 
-    /* Fondo de pantalla completo con la imagen escritorio.jpg */
+    /* Fondo de pantalla completo */
     body::before {
       content: '';
       position: fixed;
@@ -64,7 +71,6 @@
       z-index: -2;
     }
 
-    /* Capa de superposición oscura para mejorar legibilidad */
     body::after {
       content: '';
       position: fixed;
@@ -72,11 +78,10 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.75);
+      background-color: rgba(0, 0, 0, 0.65);
       z-index: -1;
     }
 
-    /* Fallback si no encuentra la imagen */
     body.no-image::before {
       background-image: url('https://www.acnur.org/sites/default/files/styles/landscape_10/public/2026-03/aranza_i.webp?h=4233b947&itok=UeDbej1d&t=1773880171');
     }
@@ -87,7 +92,7 @@
       padding: 0 24px;
     }
 
-    /* Navbar Fijo - fondo semitransparente para que se vea la imagen de fondo */
+    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -181,24 +186,12 @@
       padding-top: 100px;
     }
 
-    /* Todas las cajas con fondo blanco semitransparente para que se vea la imagen de fondo */
-    .hero,
-    #mision,
-    .colibri-section,
-    .testimonial,
-    .alianzas,
-    .instagram-carousel,
-    .video-section,
-    .contact-section {
-      background: rgba(255, 255, 255, 0.92);
+    /* Contenedores con colores pasteles */
+    .hero {
+      background: var(--pastel-mint);
       backdrop-filter: blur(2px);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-lg);
-      transition: all 0.3s ease;
-    }
-
-    /* Hero Section con texto adaptado */
-    .hero {
       margin: 30px 0 60px;
       padding: 80px 60px;
       display: flex;
@@ -207,8 +200,80 @@
       justify-content: space-between;
       gap: 50px;
       min-height: 500px;
+      transition: all 0.3s ease;
     }
 
+    #mision {
+      background: var(--pastel-lavender);
+      backdrop-filter: blur(2px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 70px 50px;
+      margin: 80px 0;
+      transition: all 0.3s ease;
+    }
+
+    .colibri-section {
+      background: var(--pastel-peach);
+      backdrop-filter: blur(2px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 70px 50px;
+      margin: 80px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial {
+      background: var(--pastel-sky);
+      backdrop-filter: blur(2px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 60px 50px;
+      margin: 80px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .alianzas {
+      background: var(--pastel-rose);
+      backdrop-filter: blur(2px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 70px 40px;
+      margin: 80px 0;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .video-section {
+      background: var(--pastel-cream);
+      backdrop-filter: blur(2px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 70px 40px;
+      margin: 80px 0;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .contact-section {
+      background: var(--pastel-mint);
+      backdrop-filter: blur(2px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 60px 50px;
+      margin: 80px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* Hero texto */
     .hero-text {
       flex: 1.2;
     }
@@ -300,16 +365,7 @@
       letter-spacing: 1px;
     }
 
-    .colibri-badge i {
-      margin-right: 8px;
-    }
-
     /* Sección Misión */
-    #mision {
-      padding: 70px 50px;
-      margin: 80px 0;
-    }
-
     .section-title {
       text-align: center;
       font-size: 2.5rem;
@@ -371,16 +427,6 @@
     }
 
     /* Centro Colibrí */
-    .colibri-section {
-      padding: 70px 50px;
-      margin: 80px 0;
-      color: var(--text-main);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 50px;
-      align-items: center;
-    }
-
     .colibri-section-text {
       flex: 1.5;
     }
@@ -436,15 +482,6 @@
     }
 
     /* Testimonio */
-    .testimonial {
-      padding: 60px 50px;
-      margin: 80px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      align-items: center;
-    }
-
     .testimonial-icon i {
       font-size: 6rem;
       color: var(--primary);
@@ -477,12 +514,6 @@
     }
 
     /* Alianzas */
-    .alianzas {
-      padding: 70px 40px;
-      margin: 80px 0;
-      text-align: center;
-    }
-
     .alianzas h3 {
       font-size: 2rem;
       margin-bottom: 40px;
@@ -532,8 +563,12 @@
       max-height: 65px;
     }
 
-    /* Carrusel */
+    /* Carrusel - MÁS ANCHO */
     .instagram-carousel {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(2px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
       padding: 70px 40px;
       margin: 80px 0;
       text-align: center;
@@ -549,24 +584,24 @@
     }
 
     .instagram-carousel h3 a {
-      color: #E1306C;
+      color: #ffffff;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .instagram-carousel h3 a:hover {
-      color: var(--primary);
+      color: #E1306C;
     }
 
     .instagram-carousel p {
       font-size: 1.1rem;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.9);
       margin-bottom: 40px;
     }
 
     .carousel-wrapper {
       position: relative;
-      max-width: 800px;
+      max-width: 1100px;
       margin: 0 auto;
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -592,6 +627,7 @@
       display: block;
     }
 
+    /* Texto blanco en el overlay del carrusel */
     .slide-overlay {
       position: absolute;
       bottom: 0;
@@ -602,6 +638,16 @@
       padding: 60px 30px 20px;
       text-align: left;
       pointer-events: none;
+    }
+
+    .slide-overlay p {
+      color: white !important;
+      font-size: 1rem;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .slide-overlay strong {
+      color: #E1306C;
     }
 
     .carousel-btn {
@@ -639,7 +685,7 @@
     .dot {
       width: 12px;
       height: 12px;
-      background: #cbd5e1;
+      background: rgba(255, 255, 255, 0.5);
       border-radius: 50%;
       border: none;
       cursor: pointer;
@@ -647,17 +693,11 @@
     }
 
     .dot.active {
-      background: var(--primary);
+      background: var(--primary-light);
       transform: scale(1.2);
     }
 
     /* Videos */
-    .video-section {
-      padding: 70px 40px;
-      margin: 80px 0;
-      text-align: center;
-    }
-
     .video-section h3 {
       font-size: 2.5rem;
       margin-bottom: 10px;
@@ -786,11 +826,6 @@
     }
 
     /* Contacto */
-    .contact-section {
-      padding: 60px 50px;
-      margin: 80px 0;
-    }
-
     .contact-general {
       display: flex;
       flex-wrap: wrap;
@@ -1044,6 +1079,9 @@
       .carousel-slide img {
         height: 350px;
       }
+      .carousel-wrapper {
+        max-width: 100%;
+      }
       .logo-card {
         min-width: 130px;
         padding: 12px 18px;
@@ -1203,7 +1241,7 @@
         </div>
       </div>
 
-      <!-- Galería -->
+      <!-- Galería - Carrusel más ancho con auto-rotación cada 20 segundos -->
       <div id="galeria" class="instagram-carousel">
         <h3>
           <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer">
@@ -1422,7 +1460,7 @@
       }
     });
 
-    // Carrusel
+    // Carrusel con auto-rotación cada 20 segundos
     const track = document.getElementById('carouselTrack');
     const slides = Array.from(track.children);
     const btnNext = document.getElementById('btnNext');
@@ -1430,8 +1468,10 @@
     const dotsNav = document.getElementById('carouselDots');
     const wrapper = document.querySelector('.carousel-wrapper');
     
+    let autoRotateInterval;
     let isHovering = false;
     
+    // Crear dots
     slides.forEach((_, index) => {
       const dot = document.createElement('button');
       dot.classList.add('dot');
@@ -1450,14 +1490,38 @@
       dots[index].classList.add('active');
     };
 
+    const nextSlide = () => {
+      if (!isHovering) {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel(currentIndex);
+      }
+    };
+
+    // Iniciar auto-rotación cada 20 segundos
+    const startAutoRotate = () => {
+      if (autoRotateInterval) clearInterval(autoRotateInterval);
+      autoRotateInterval = setInterval(nextSlide, 20000); // 20 segundos
+    };
+
+    const stopAutoRotate = () => {
+      if (autoRotateInterval) {
+        clearInterval(autoRotateInterval);
+        autoRotateInterval = null;
+      }
+    };
+
+    // Eventos del carrusel
     btnNext.addEventListener('click', () => {
-      currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+      currentIndex = (currentIndex + 1) % slides.length;
       updateCarousel(currentIndex);
+      // Reiniciar el temporizador después de interacción manual
+      startAutoRotate();
     });
 
     btnPrev.addEventListener('click', () => {
-      currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
       updateCarousel(currentIndex);
+      startAutoRotate();
     });
 
     dotsNav.addEventListener('click', e => {
@@ -1465,10 +1529,22 @@
       if (!targetDot) return;
       currentIndex = parseInt(targetDot.getAttribute('data-index'));
       updateCarousel(currentIndex);
+      startAutoRotate();
     });
 
-    wrapper.addEventListener('mouseenter', () => { isHovering = true; });
-    wrapper.addEventListener('mouseleave', () => { isHovering = false; });
+    // Pausar auto-rotación al hacer hover
+    wrapper.addEventListener('mouseenter', () => {
+      isHovering = true;
+      stopAutoRotate();
+    });
+    
+    wrapper.addEventListener('mouseleave', () => {
+      isHovering = false;
+      startAutoRotate();
+    });
+
+    // Iniciar auto-rotación
+    startAutoRotate();
 
     // Modal Video
     const videoModal = document.getElementById('videoModal');
@@ -1482,6 +1558,8 @@
         youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
         videoModal.classList.add('active');
         document.body.style.overflow = 'hidden';
+        // Pausar carrusel mientras el modal está abierto
+        stopAutoRotate();
       });
     });
 
@@ -1489,6 +1567,8 @@
       videoModal.classList.remove('active');
       youtubeIframe.src = '';
       document.body.style.overflow = '';
+      // Reanudar auto-rotación del carrusel
+      startAutoRotate();
     };
 
     closeModalBtn.addEventListener('click', closeVideo);
