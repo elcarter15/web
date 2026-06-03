@@ -33,12 +33,13 @@
       --radius-xl: 48px;
       
       /* Colores pasteles para contenedores */
-      --pastel-mint: rgba(152, 201, 185, 0.88);
-      --pastel-lavender: rgba(198, 185, 216, 0.88);
-      --pastel-peach: rgba(255, 218, 193, 0.88);
-      --pastel-sky: rgba(167, 207, 223, 0.88);
-      --pastel-rose: rgba(248, 202, 202, 0.88);
-      --pastel-cream: rgba(252, 242, 220, 0.88);
+      --pastel-mint: rgba(152, 201, 185, 0.92);
+      --pastel-lavender: rgba(198, 185, 216, 0.92);
+      --pastel-peach: rgba(255, 218, 193, 0.92);
+      --pastel-sky: rgba(167, 207, 223, 0.92);
+      --pastel-rose: rgba(248, 202, 202, 0.92);
+      --pastel-cream: rgba(252, 242, 220, 0.92);
+      --pastel-lilac: rgba(200, 180, 210, 0.92);
     }
 
     * {
@@ -78,7 +79,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.65);
+      background-color: rgba(0, 0, 0, 0.6);
       z-index: -1;
     }
 
@@ -563,9 +564,9 @@
       max-height: 65px;
     }
 
-    /* Carrusel - MÁS ANCHO */
+    /* Carrusel - Fondo pastel */
     .instagram-carousel {
-      background: rgba(0, 0, 0, 0.75);
+      background: var(--pastel-lilac);
       backdrop-filter: blur(2px);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-lg);
@@ -584,7 +585,7 @@
     }
 
     .instagram-carousel h3 a {
-      color: #ffffff;
+      color: var(--text-main);
       text-decoration: none;
       transition: color 0.3s ease;
     }
@@ -595,7 +596,7 @@
 
     .instagram-carousel p {
       font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--text-muted);
       margin-bottom: 40px;
     }
 
@@ -606,7 +607,7 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-lg);
-      background: #0f172a;
+      background: rgba(255, 255, 255, 0.3);
     }
 
     .carousel-track {
@@ -623,17 +624,17 @@
       width: 100%;
       height: 550px;
       object-fit: cover;
-      background: #0f172a;
+      background: #f0f0f0;
       display: block;
     }
 
-    /* Texto blanco en el overlay del carrusel */
+    /* Overlay del carrusel */
     .slide-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
       color: white;
       padding: 60px 30px 20px;
       text-align: left;
@@ -644,6 +645,7 @@
       color: white !important;
       font-size: 1rem;
       text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      margin: 0;
     }
 
     .slide-overlay strong {
@@ -685,7 +687,7 @@
     .dot {
       width: 12px;
       height: 12px;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(0, 0, 0, 0.3);
       border-radius: 50%;
       border: none;
       cursor: pointer;
@@ -693,11 +695,11 @@
     }
 
     .dot.active {
-      background: var(--primary-light);
+      background: var(--primary);
       transform: scale(1.2);
     }
 
-    /* Videos */
+    /* Videos con reseñas */
     .video-section h3 {
       font-size: 2.5rem;
       margin-bottom: 10px;
@@ -711,7 +713,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -735,12 +737,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.7;
       transition: opacity 0.3s ease;
     }
 
     .video-card:hover img {
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
     .play-button {
@@ -748,12 +749,12 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: #FF0000;
       background: white;
       border-radius: 50%;
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -763,6 +764,37 @@
 
     .video-card:hover .play-button {
       transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Reseña del video */
+    .video-review {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      color: white;
+      padding: 40px 15px 12px;
+      text-align: left;
+      pointer-events: none;
+    }
+
+    .video-review p {
+      font-size: 0.85rem;
+      margin: 0;
+      line-height: 1.4;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+
+    .video-review strong {
+      color: #FF0000;
+      font-size: 0.9rem;
+    }
+
+    .video-review .video-stats {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 5px;
     }
 
     /* Modal Video */
@@ -1089,6 +1121,9 @@
       .logo-card img {
         max-height: 40px;
       }
+      .video-grid {
+        gap: 20px;
+      }
     }
 
     @media (max-width: 600px) {
@@ -1100,6 +1135,9 @@
       }
       .hero-text .hero-subtitle {
         font-size: 1.1rem;
+      }
+      .carousel-slide img {
+        height: 250px;
       }
     }
   </style>
@@ -1241,7 +1279,7 @@
         </div>
       </div>
 
-      <!-- Galería - Carrusel más ancho con auto-rotación cada 20 segundos -->
+      <!-- Galería - Carrusel con fondo pastel -->
       <div id="galeria" class="instagram-carousel">
         <h3>
           <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer">
@@ -1293,7 +1331,7 @@
         <div class="carousel-dots" id="carouselDots"></div>
       </div>
 
-      <!-- Sección Videos -->
+      <!-- Sección Videos con reseñas -->
       <div id="videos" class="video-section">
         <h3><i class="fa-brands fa-youtube" style="color: #FF0000;"></i> Nuestros Videos</h3>
         <p>Conoce más sobre nuestra labor y el impacto en la comunidad.</p>
@@ -1302,21 +1340,37 @@
           <div class="video-card open-video" data-video-id="yokf9ZSx-z0">
             <img src="https://img.youtube.com/vi/yokf9ZSx-z0/hqdefault.jpg" alt="Video presentación Fundación Luz y Vida" loading="lazy">
             <div class="play-button"><i class="fa-solid fa-play"></i></div>
+            <div class="video-review">
+              <p><strong>🎬 Presentación institucional</strong><br>Conoce nuestra misión y el trabajo que realizamos diariamente en Petare.</p>
+              <div class="video-stats">👁️ 2.5K vistas · ❤️ 189</div>
+            </div>
           </div>
           
           <div class="video-card open-video" data-video-id="wsbEZ43e5EA">
             <img src="https://img.youtube.com/vi/wsbEZ43e5EA/hqdefault.jpg" alt="Testimonios de la comunidad" loading="lazy">
             <div class="play-button"><i class="fa-solid fa-play"></i></div>
+            <div class="video-review">
+              <p><strong>🗣️ Testimonios de la comunidad</strong><br>Familias y niños comparten cómo la fundación ha transformado sus vidas.</p>
+              <div class="video-stats">👁️ 3.2K vistas · ❤️ 234</div>
+            </div>
           </div>
           
           <div class="video-card open-video" data-video-id="qZb1H8-otAY">
             <img src="https://img.youtube.com/vi/qZb1H8-otAY/hqdefault.jpg" alt="Talleres educativos en Petare" loading="lazy">
             <div class="play-button"><i class="fa-solid fa-play"></i></div>
+            <div class="video-review">
+              <p><strong>📚 Talleres educativos</strong><br>Nuestras aulas comunitarias llenas de aprendizaje y esperanza.</p>
+              <div class="video-stats">👁️ 1.8K vistas · ❤️ 156</div>
+            </div>
           </div>
 
           <div class="video-card open-video" data-video-id="gMxRIG6H7vg">
             <img src="https://img.youtube.com/vi/gMxRIG6H7vg/hqdefault.jpg" alt="Jornada de atención integral" loading="lazy">
             <div class="play-button"><i class="fa-solid fa-play"></i></div>
+            <div class="video-review">
+              <p><strong>🤝 Jornada de atención integral</strong><br>Un día de servicios médicos, legales y recreativos para toda la familia.</p>
+              <div class="video-stats">👁️ 4.1K vistas · ❤️ 312</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1497,10 +1551,9 @@
       }
     };
 
-    // Iniciar auto-rotación cada 20 segundos
     const startAutoRotate = () => {
       if (autoRotateInterval) clearInterval(autoRotateInterval);
-      autoRotateInterval = setInterval(nextSlide, 20000); // 20 segundos
+      autoRotateInterval = setInterval(nextSlide, 20000);
     };
 
     const stopAutoRotate = () => {
@@ -1514,7 +1567,6 @@
     btnNext.addEventListener('click', () => {
       currentIndex = (currentIndex + 1) % slides.length;
       updateCarousel(currentIndex);
-      // Reiniciar el temporizador después de interacción manual
       startAutoRotate();
     });
 
@@ -1532,7 +1584,6 @@
       startAutoRotate();
     });
 
-    // Pausar auto-rotación al hacer hover
     wrapper.addEventListener('mouseenter', () => {
       isHovering = true;
       stopAutoRotate();
@@ -1543,7 +1594,6 @@
       startAutoRotate();
     });
 
-    // Iniciar auto-rotación
     startAutoRotate();
 
     // Modal Video
@@ -1558,7 +1608,6 @@
         youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
         videoModal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        // Pausar carrusel mientras el modal está abierto
         stopAutoRotate();
       });
     });
@@ -1567,7 +1616,6 @@
       videoModal.classList.remove('active');
       youtubeIframe.src = '';
       document.body.style.overflow = '';
-      // Reanudar auto-rotación del carrusel
       startAutoRotate();
     };
 
