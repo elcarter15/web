@@ -8,14 +8,14 @@
   <meta name="author" content="Fundación Luz y Vida">
   <title>Fundación Luz y Vida | Petare</title>
   
-  <!-- Favicon - Icono en la pestaña del navegador -->
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' text-anchor='middle' dy='.3em' font-size='80' fill='%230b5e42'>🕊️</text></svg>">
   <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' text-anchor='middle' dy='.3em' font-size='80' fill='%230b5e42'>🕊️</text></svg>">
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    /* Variables CSS - Esquema de colores */
+    /* Variables CSS */
     :root {
       --primary: #0b5e42;
       --primary-light: #2c9c6e;
@@ -35,6 +35,7 @@
     * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
@@ -51,7 +52,7 @@
       padding: 0 24px;
     }
 
-    /* Cintillo/Navbar Fijo */
+    /* Navbar Fijo */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -85,8 +86,6 @@
 
     .navbar.scrolled {
       padding: 12px 36px;
-      background: rgba(255, 255, 255, 0.98);
-      box-shadow: var(--shadow-lg);
     }
 
     .logo h1 {
@@ -146,23 +145,23 @@
       padding-top: 100px;
     }
 
-    /* Hero Section con Imagen Institucional de Fondo */
+    /* Hero Section con Imagen de Fondo (escritorio.jpg) */
     .hero {
       border-radius: var(--radius-xl);
       margin: 30px 0 60px;
-      padding: 80px 50px;
+      padding: 100px 60px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 40px;
+      gap: 50px;
       box-shadow: var(--shadow-lg);
       position: relative;
       overflow: hidden;
-      min-height: 500px;
+      min-height: 600px;
     }
 
-    /* Imagen de fondo institucional */
+    /* Imagen de fondo - buscará escritorio.jpg en diferentes rutas */
     .hero::before {
       content: '';
       position: absolute;
@@ -170,13 +169,18 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: url('https://www.acnur.org/sites/default/files/styles/landscape_10/public/2026-03/aranza_i.webp?h=4233b947&itok=UeDbej1d&t=1773880171');
+      background-image: url('escritorio.jpg');
       background-size: cover;
-      background-position: center 30%;
+      background-position: center;
       background-repeat: no-repeat;
-      filter: brightness(0.35) contrast(1.1);
+      filter: brightness(0.4) contrast(1.1);
       z-index: 0;
       transition: transform 0.5s ease;
+    }
+
+    /* Fallback: si no encuentra escritorio.jpg, usa esta imagen de respaldo */
+    .hero.no-image::before {
+      background-image: url('https://www.acnur.org/sites/default/files/styles/landscape_10/public/2026-03/aranza_i.webp?h=4233b947&itok=UeDbej1d&t=1773880171');
     }
 
     .hero:hover::before {
@@ -189,13 +193,31 @@
       z-index: 1;
     }
 
-    .hero-text h2 {
-      font-size: 3.5rem;
+    /* Nuevo estilo de título con letras grandes estilo cartel */
+    .hero-text .hero-title-large {
+      font-size: 5rem;
       font-weight: 800;
-      line-height: 1.1;
+      line-height: 1;
       color: white;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      margin-bottom: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-text .hero-subtitle {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.95);
       text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+    }
+
+    .hero-text .hero-tagline {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+      text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+      max-width: 550px;
     }
 
     .hero-text p {
@@ -230,14 +252,14 @@
     }
 
     .hero-img {
-      flex: 0.9;
+      flex: 0.8;
       text-align: center;
       position: relative;
       z-index: 1;
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(10px);
       border-radius: var(--radius-lg);
-      padding: 30px;
+      padding: 40px;
       animation: float 6s ease-in-out infinite;
     }
 
@@ -250,6 +272,24 @@
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-15px); }
+    }
+
+    /* Badge de Colibrí */
+    .colibri-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(5px);
+      padding: 8px 20px;
+      border-radius: 40px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .colibri-badge i {
+      margin-right: 8px;
     }
 
     /* Sección Misión */
@@ -321,8 +361,8 @@
       font-size: 1rem;
     }
 
-    /* Programa Colibrí */
-    .colibri {
+    /* Centro Colibrí */
+    .colibri-section {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       border-radius: var(--radius-xl);
       padding: 70px 50px;
@@ -335,11 +375,11 @@
       box-shadow: var(--shadow-lg);
     }
 
-    .colibri-text {
+    .colibri-section-text {
       flex: 1.5;
     }
 
-    .colibri-text h3 {
+    .colibri-section-text h3 {
       font-size: 2.5rem;
       margin-bottom: 20px;
       display: flex;
@@ -347,7 +387,7 @@
       gap: 15px;
     }
 
-    .colibri-text p {
+    .colibri-section-text p {
       font-size: 1.15rem;
       margin-bottom: 30px;
       opacity: 0.95;
@@ -374,7 +414,7 @@
       margin-bottom: 5px;
     }
 
-    .colibri-img {
+    .colibri-section-img {
       flex: 0.8;
       text-align: center;
       background: rgba(255,255,255,0.1);
@@ -383,7 +423,7 @@
       backdrop-filter: blur(5px);
     }
 
-    .colibri-img i {
+    .colibri-section-img i {
       font-size: 6rem;
       margin-bottom: 15px;
     }
@@ -445,7 +485,7 @@
 
     .alianzas h3 {
       font-size: 2rem;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
       color: var(--text-main);
     }
 
@@ -489,10 +529,10 @@
     }
 
     .logo-acnur img {
-      max-height: 60px;
+      max-height: 65px;
     }
 
-    /* Carrusel de Galería */
+    /* Carrusel */
     .instagram-carousel {
       background: #fdf2f8;
       border-radius: var(--radius-xl);
@@ -614,7 +654,7 @@
       transform: scale(1.2);
     }
 
-    /* Sección Videos */
+    /* Videos */
     .video-section {
       background: #fff7ed;
       border-radius: var(--radius-xl);
@@ -691,7 +731,7 @@
       transform: translate(-50%, -50%) scale(1.1);
     }
 
-    /* Modal de Video */
+    /* Modal Video */
     .video-modal {
       display: none;
       position: fixed;
@@ -751,7 +791,7 @@
       border-radius: 8px;
     }
 
-    /* Sección Contacto */
+    /* Contacto */
     .contact-section {
       background: #f5f3ff;
       border-radius: var(--radius-xl);
@@ -992,10 +1032,13 @@
       }
       .hero {
         text-align: center;
-        padding: 50px 30px;
+        padding: 60px 30px;
       }
-      .hero-text h2 {
-        font-size: 2.5rem;
+      .hero-text .hero-title-large {
+        font-size: 3rem;
+      }
+      .hero-text .hero-subtitle {
+        font-size: 1.3rem;
       }
       .hero-img {
         display: none;
@@ -1003,7 +1046,7 @@
       .main-content {
         padding-top: 130px;
       }
-      #mision, .colibri, .testimonial, .alianzas, .instagram-carousel, .video-section, .contact-section {
+      #mision, .colibri-section, .testimonial, .alianzas, .instagram-carousel, .video-section, .contact-section {
         padding: 40px 30px;
       }
       .carousel-slide img {
@@ -1022,17 +1065,17 @@
       .main-content {
         padding-top: 160px;
       }
-      .hero-text h2 {
-        font-size: 2rem;
+      .hero-text .hero-title-large {
+        font-size: 2.2rem;
       }
-      .hero-text p {
-        font-size: 1rem;
+      .hero-text .hero-subtitle {
+        font-size: 1.1rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Cintillo/Navbar Fijo -->
+  <!-- Navbar Fijo -->
   <nav class="navbar" id="navbar">
     <div class="navbar-container">
       <div class="logo">
@@ -1053,11 +1096,17 @@
 
   <div class="main-content">
     <div class="container">
-      <!-- Hero Section con Imagen Institucional de Fondo -->
-      <div id="inicio" class="hero">
+      <!-- Hero Section con imagen escritorio.jpg como fondo -->
+      <div id="inicio" class="hero" id="heroSection">
         <div class="hero-text">
-          <h2>Defendemos la infancia en Petare</h2>
-          <p>Más de 30 años transformando vidas. Brindamos educación, protegemos los derechos humanos y construimos esperanza para niños, niñas y adolescentes en situación de vulnerabilidad.</p>
+          <div class="colibri-badge">
+            <i class="fa-solid fa-dove"></i> COLIBRÍ · CENTRO COMUNITARIO
+          </div>
+          <div class="hero-title-large">FUNDACIÓN<br>LUZ Y VIDA</div>
+          <div class="hero-subtitle">Protección a la infancia y la familia</div>
+          <div class="hero-tagline">
+            <i class="fa-solid fa-location-dot"></i> espacio de protección y convivencia
+          </div>
           <a href="#galeria" class="hero-btn">Conoce nuestro impacto <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="hero-img">
@@ -1093,8 +1142,8 @@
       </div>
 
       <!-- Centro Colibrí -->
-      <div id="colibri" class="colibri">
-        <div class="colibri-text">
+      <div id="colibri" class="colibri-section">
+        <div class="colibri-section-text">
           <h3><i class="fa-solid fa-dove"></i> Centro Comunitario "Colibrí"</h3>
           <p>Ubicado en el sector Antonio José de Sucre, Petare. Un espacio seguro donde la educación es el verdadero motor del cambio social. Actualmente atendemos a menores que retornaron a Venezuela o que nunca tuvieron acceso al sistema escolar tradicional.</p>
           <p>Con el valioso apoyo de ACNUR, hemos instalado una moderna sala tecnológica y brindamos programas de nivelación acelerada.</p>
@@ -1104,7 +1153,7 @@
             <div class="stat"><span>2023-2025</span> Aliados ONU</div>
           </div>
         </div>
-        <div class="colibri-img">
+        <div class="colibri-section-img">
           <i class="fa-solid fa-chalkboard-user"></i>
           <p style="margin-top: 15px; font-weight: 600; font-size: 1.1rem;">Aulas vivas de esperanza</p>
         </div>
@@ -1242,7 +1291,7 @@
         </div>
       </div>
 
-      <!-- Modal de Video -->
+      <!-- Modal Video -->
       <div id="videoModal" class="video-modal">
         <div class="modal-content">
           <span class="close-modal" id="closeModal">×</span>
@@ -1252,15 +1301,15 @@
         </div>
       </div>
 
-      <!-- Sección Contacto -->
+      <!-- Contacto -->
       <div id="contacto" class="contact-section">
         <div class="contact-general">
           <div>
             <h3 style="font-size: 2rem; color: var(--text-main); margin-bottom: 10px;">Ponte en contacto</h3>
             <div class="contact-general-info">
               <p><i class="fa-solid fa-clock"></i> <span><strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 4:00 PM</span></p>
-              <p><i class="fa-solid fa-phone-alt"></i> <span>+5802122390472 (Oficina)</span></p>
-              <p><i class="fa-solid fa-envelope"></i> <span>contacto@fundaluzyvida.org.ve</span></p>
+              <p><i class="fa-solid fa-phone-alt"></i> <span>+58 212 123 4567 (Oficina)</span></p>
+              <p><i class="fa-solid fa-envelope"></i> <span>contacto@luzyvidapetare.org</span></p>
             </div>
           </div>
           
@@ -1344,7 +1393,21 @@
   </button>
 
   <script>
-    // 1. Scroll Suave
+    // Detectar si la imagen escritorio.jpg existe, si no, usar fallback
+    const heroSection = document.getElementById('heroSection');
+    const imgTest = new Image();
+    imgTest.onload = function() {
+      // La imagen existe, no hacer nada
+      console.log('escritorio.jpg cargada correctamente');
+    };
+    imgTest.onerror = function() {
+      // La imagen no existe, agregar clase de fallback
+      heroSection.classList.add('no-image');
+      console.log('Usando imagen de respaldo');
+    };
+    imgTest.src = 'escritorio.jpg';
+
+    // Scroll Suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -1360,7 +1423,7 @@
       });
     });
 
-    // 2. Navbar efecto scroll
+    // Navbar efecto scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
@@ -1370,7 +1433,7 @@
       }
     });
 
-    // 3. Carrusel
+    // Carrusel
     const track = document.getElementById('carouselTrack');
     const slides = Array.from(track.children);
     const btnNext = document.getElementById('btnNext');
@@ -1418,7 +1481,7 @@
     wrapper.addEventListener('mouseenter', () => { isHovering = true; });
     wrapper.addEventListener('mouseleave', () => { isHovering = false; });
 
-    // 4. Modal de Video
+    // Modal Video
     const videoModal = document.getElementById('videoModal');
     const closeModalBtn = document.getElementById('closeModal');
     const youtubeIframe = document.getElementById('youtubeIframe');
@@ -1450,7 +1513,7 @@
       }
     });
 
-    // 5. Botón para subir al inicio
+    // Botón subir
     const scrollTopBtn = document.getElementById('scrollTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
