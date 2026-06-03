@@ -910,33 +910,27 @@
       border-radius: 8px;
     }
 
-    /* Contacto */
+    /* Contacto - Nueva estructura */
     .contact-general {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
       gap: 30px;
       margin-bottom: 40px;
       padding-bottom: 30px;
       border-bottom: 1px solid rgba(30, 41, 59, 0.1);
     }
 
-    /* Estilos para el contenedor de texto de contacto */
-    .contact-info-text {
-      flex: 2;
-    }
     .contact-info-text h3 {
       font-size: 2rem;
       color: var(--text-main);
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .contact-general-info {
       display: flex;
       flex-wrap: wrap;
       gap: 30px;
-      margin-top: 15px;
+      margin-bottom: 20px;
     }
 
     .contact-general-info p {
@@ -951,10 +945,11 @@
       color: var(--primary);
     }
 
-    /* Redes sociales alineadas a la derecha */
-    .contact-social {
-      flex-shrink: 0;
-      margin-left: auto;
+    /* Redes sociales - Ahora debajo de la info, alineadas a la derecha */
+    .contact-social-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
     }
 
     .social-links {
@@ -1198,17 +1193,11 @@
       .video-grid {
         gap: 20px;
       }
-      .contact-general {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .contact-social {
-        margin-left: 0;
-        width: 100%;
+      .contact-social-wrapper {
+        justify-content: center;
       }
       .social-links {
-        justify-content: flex-start;
-        margin-top: 15px;
+        justify-content: center;
       }
     }
 
@@ -1237,6 +1226,10 @@
       }
       .logo-card .logo-name {
         font-size: 0.65rem;
+      }
+      .contact-general-info {
+        flex-direction: column;
+        gap: 15px;
       }
     }
   </style>
@@ -1522,7 +1515,7 @@
         </div>
       </div>
 
-      <!-- Contacto - Redes sociales alineadas a la derecha -->
+      <!-- Contacto - Redes sociales debajo de la información de contacto -->
       <div id="contacto" class="contact-section">
         <div class="contact-general">
           <div class="contact-info-text">
@@ -1538,7 +1531,8 @@
             </div>
           </div>
           
-          <div class="contact-social">
+          <!-- Redes sociales justo debajo de la última línea de contacto, alineadas a la derecha -->
+          <div class="contact-social-wrapper">
             <div class="social-links">
                <a href="https://www.instagram.com/fundaluzyvida/?hl=es-la" target="_blank" rel="noopener noreferrer" class="instagram" title="Instagram">
                 <i class="fa-brands fa-instagram"></i>
