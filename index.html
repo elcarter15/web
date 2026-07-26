@@ -93,7 +93,7 @@
       padding: 0 24px;
     }
 
-    /* Navbar */
+/* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -106,12 +106,22 @@
       top: 0;
       left: 0;
       right: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(12px);
+      background: transparent; /* Fondo transparente al inicio */
+      backdrop-filter: none; /* Quitamos el efecto borroso al inicio */
       z-index: 1000;
-      box-shadow: var(--shadow-md);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
+      /* Quitamos la sombra y el borde al inicio para que quede totalmente invisible */
+      box-shadow: none; 
+      border-bottom: none;
+    }
+
+    /* Efecto cuando el usuario baja por la página */
+    .navbar.scrolled {
+      padding: 12px 36px;
+      background: rgba(0, 0, 0, 0.95); /* Vuelve a ser negra */
+      backdrop-filter: blur(12px); /* Recupera el efecto borroso */
+      box-shadow: var(--shadow-md); /* Recupera la sombra */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .navbar-container {
